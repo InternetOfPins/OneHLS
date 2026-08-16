@@ -1,0 +1,31 @@
+{
+  "name": "OneHLS",
+  "version": "0.1.0",
+  "description": "HAPI/OneData-based HLS-synthesizable DSP and control components (FIR, IIR, PID), type-agnostic across bit-accurate fixed-point libraries (HLSLibs ac_types, Xilinx ap_types)",
+  "keywords": "hls, dsp, fir, iir, pid, fpga, fixed-point, components",
+  "build": {
+    "srcFilter": ["-<*>"]
+  },
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/InternetOfPins/OneHLS.git"
+  },
+  "authors":
+  [
+    {
+      "name": "Rui Azevedo",
+      "email": "ruihfazevedo@gmail.com",
+      "url": "https://github.com/neu-rah",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/InternetOfPins/OneHLS",
+  "dependencies": {
+    "HAPI": ">=0.4.1",
+    "OneData": ">=0.1.17"
+  },
+  "frameworks": "*",
+  "platforms": "*"
+}
