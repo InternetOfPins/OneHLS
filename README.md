@@ -131,6 +131,24 @@ See [test/test.cpp](test/test.cpp) for the native regression suite and [.RnD/hls
 
 ---
 
+## Experimental: `ac_std_float`
+
+`oneHLS::Fir<>` has also been verified — natively and synthesized — over `ac_std_float<W,E>`, HLSLibs' real IEEE754 bit-accurate floating point (not a fixed-point type at all). This is **not** a supported vendor path (no `ac_std_float_support.h` ships), just a documented finding:
+
+- **Native:** `Fir<ac_std_float<32,8>, ac_std_float<64,11>, 10,118,118,10>` reproduces `0 10 118 118 10 0 0 0` exactly, with **zero changes** to `oneHLS.h` — the default `RawBitsCtor<T>` already does the right thing, since `ac_std_float`'s `explicit ac_std_float(int)` constructor treats an integer coefficient as its literal value. This only covers the whole-number-coefficient case; `Biquad`/`Pid`'s fractional Q8.8 raw-bit convention is fixed-point-specific and doesn't carry over as-is.
+- **Bambu synthesis:** clean, and fast (16.4s, nowhere near a 500s bound). Unlike `ac_fixed`/`ap_fixed` — where `+`/`*` inline directly — Bambu keeps `ac_std_float`'s `operator+`, `operator*`, and its widening constructor as separate, shared hardware modules the top-level FSM calls into sequentially (confirmed via the generated Verilog's actual module instantiations, not just the synthesis log, since the log alone was ambiguous about whether these were real hardware or inlined-away build artifacts). Summed across all four real modules:
+
+  | | Flip-flops | Area | DSPs | State binding |
+  |---|---|---|---|---|
+  | `Fir<>` over `ac_fixed` (baseline) | 62 | 7679 | 0 | distributed RAM |
+  | `Fir<>` over `ac_std_float` | 3670 | 22682 | 12 | **BRAM** (17 controller instances) |
+
+  ~59× the flip-flops, ~3× the area, and real DSP usage where fixed-point used none. This **confirms** conventional floating-point-on-FPGAs cost expectations rather than contradicting them — a real, expected finding, not an anomaly. The BRAM binding matches the same wide/complex-type pattern already seen with `ComplexMac<>`, not something specific to floating point.
+
+See [.RnD/hls/fir_std_float_top.cpp](.RnD/hls/fir_std_float_top.cpp).
+
+---
+
 ## Dependencies
 
 - C++17 or later
