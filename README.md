@@ -4,7 +4,7 @@
 
 Type-agnostic, HLS-synthesizable DSP and control components for **HAPI** + **OneData**.
 
-`Fir<>`, `Biquad<>`, and `Pid<>` are written once against a caller-chosen `Sample`/`Accum` type — the composition never names a vendor fixed-point type directly. The same unmodified templates have been verified against two independent bit-accurate fixed-point libraries (Siemens HLSLibs `ac_types` and Xilinx/AMD `ap_types`), both natively and synthesized to real RTL via [Bambu HLS](https://release.bambuhls.eu/), with bit-identical numeric results and gate-identical resource counts across both vendors.
+`Fir<>`, `Biquad<>`, `Pid<>`, `Accumulator<>`, and `ComplexMac<>` are written once against a caller-chosen `Sample`/`Accum` type — the composition never names a vendor fixed-point type directly. The same unmodified templates have been verified against two independent bit-accurate fixed-point libraries (Siemens HLSLibs `ac_types` and Xilinx/AMD `ap_types`), both natively and synthesized to real RTL via [Bambu HLS](https://release.bambuhls.eu/), with bit-identical numeric results and gate-identical resource counts across both vendors.
 
 ---
 
@@ -15,9 +15,18 @@ Type-agnostic, HLS-synthesizable DSP and control components for **HAPI** + **One
 | `Fir<Sample,Accum,Coeffs...>` | N-tap FIR filter, direct form | one `oneData::Data<Sample>` delay per tap |
 | `Biquad<Sample,Accum,B1,B2,FBA1,FBA2>` | 2nd-order IIR section, direct form I | 2 feedforward + 2 feedback delays |
 | `Pid<Sample,Accum,Kp,Ki,Kd>` | PID controller (`u = Kp·e + Ki·Σe + Kd·Δe`) | 1 accumulator + 1 delay |
+| `Accumulator<Sample,Accum>` | Running sum; `Sample==Accum` gives 2's-complement wraparound instead of headroom | 1 `oneData::Data<Accum>` |
+| `Complex<T>` / `ComplexMac<Sample,Accum,CoeffRe,CoeffIm>` | Complex multiply-accumulate over OneHLS's own vendor-agnostic complex struct | 1 `oneData::Data<Complex<Accum>>` — **not zero-cost, see below** |
 | `RawBitsCtor<T>` | Customization point: build a coefficient from a raw, pre-scaled bit pattern | — |
 
-All three are ordinary HAPI `Chain<>` compositions under the hood (see [include/oneHLS/oneHLS.h](include/oneHLS/oneHLS.h)) — `Biquad`'s feedforward taps *are* `Fir`'s `Tap` alias, reused verbatim.
+All are ordinary HAPI `Chain<>` compositions under the hood (see [include/oneHLS/oneHLS.h](include/oneHLS/oneHLS.h)) — `Biquad`'s feedforward taps *are* `Fir`'s `Tap` alias, reused verbatim, and `Pid`'s integral term is an inline `Accumulator`-shaped chain.
+
+**Cascading:** there's no separate "cascade" type — `Fir`/`Biquad` are plain value types, so N sections in series is just N instances with one `.step()`/`.filter()` output feeding the next's input:
+
+```cpp
+oneHLS::Biquad<Sample, Accum, 128, 64, 128, -64> stage1, stage2;
+Sample y = stage2.step(stage1.step(x));  // 4th-order filter from two 2nd-order sections
+```
 
 ---
 
@@ -42,6 +51,14 @@ Sample y2 = biquad.step(Sample(x));
 // PID: Kp=1.0(256), Ki=0.25(64), Kd=0.5(128)
 oneHLS::Pid<Sample, Accum, 256, 64, 128> pid;
 Accum u = pid.step(Sample(error));
+
+// Running sum -- Sample==Accum gives 2's-complement wraparound
+oneHLS::Accumulator<ac_int<8,true>, ac_int<8,true>> acc;
+ac_int<8,true> total = acc.step(x);
+
+// Complex multiply-accumulate, coefficient 2-1j
+oneHLS::ComplexMac<Sample, Accum, 2, -1> cmac;
+oneHLS::Complex<Accum> r = cmac.step(oneHLS::Complex<Sample>{Sample(xr), Sample(xi)});
 ```
 
 Swapping vendors is a one-line change — everything else, including the coefficients, is unchanged:
@@ -95,16 +112,22 @@ Native sequences (hand-derived, exact — no rounding, all coefficients are powe
 | `Biquad<>` impulse response | `0 128 128 32 -16 -16 -4 2` |
 | `Pid<>` constant error (e=1 ×5) | `448 384 448 512 576` |
 | `Pid<>` impulse disturbance | `448 -64 64 64 64` |
+| `Accumulator<ac_int<8,true>>` (+50 ×3, wraps) | `50 100 -106` |
+| `ComplexMac<>` (coeff `2-1j`, input `3+4j` ×2) | `10+5j` then `20+10j` |
 
-Bambu HLS synthesis (`xc7a100t-1csg324-VVD`, 10 ns clock, `ac_fixed` instantiation) — zero warnings, real RTL, and **identical** resource counts to the hand-written, non-generic components this library replaces:
+Bambu HLS synthesis (`xc7a100t-1csg324-VVD`, 10 ns clock, `ac_fixed` instantiation) — clean, real RTL, and **identical** resource counts to the hand-written, non-generic components this library replaces (`Fir`/`Biquad`/`Pid`/`Accumulator` synthesize with zero warnings; `ComplexMac<>`'s pointer-output params trigger one expected, benign "unknown addresses" note, not an error):
 
-| Component | Flip-flops | Area | DSPs |
-|---|---|---|---|
-| `Fir<>` (4-tap) | 62 | 7679 | 0 |
-| `Biquad<>` | 101 | 6855 | 0 |
-| `Pid<>` | 32 | 3841 | 0 |
+| Component | Flip-flops | Area | DSPs | State binding |
+|---|---|---|---|---|
+| `Fir<>` (4-tap) | 62 | 7679 | 0 | distributed RAM |
+| `Biquad<>` | 101 | 6855 | 0 | distributed RAM |
+| `Pid<>` | 32 | 3841 | 0 | distributed RAM |
+| `Accumulator<>` (8-bit) | 32 | 1880 | 0 | distributed RAM |
+| `ComplexMac<>` | 287 | 1108 | 0 | **BRAM** (see caveat below) |
 
 See [test/test.cpp](test/test.cpp) for the native regression suite and [.RnD/hls/](.RnD/hls/) for the Bambu synthesis targets.
+
+**`ComplexMac<>` is not zero-cost.** At 64 raw bits (`Complex<ac_fixed<32,32,true>>`), Bambu binds the accumulator to a real BRAM primitive (dual-port controller, address decoding) instead of the lightweight distributed RAM every other component here gets — reproducible and correct, just a different resource profile, not a defect. This was first observed with the vendor's own `ac_complex<T>` and has been re-confirmed to reproduce identically with OneHLS's own `Complex<T>`, so it's a property of the width/access pattern, not of any one struct definition. The exact Bambu-internal trigger for the threshold was not traced further.
 
 ---
 

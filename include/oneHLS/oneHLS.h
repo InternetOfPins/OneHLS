@@ -164,4 +164,85 @@ namespace oneHLS {
       return p + i + d;
     }
   };
+
+  // ── Accumulator ──────────────────────────────────────────────────────
+  // Plain running sum: Accum(x) added to the stored total every step. No
+  // separate mac()/Terminal routing needed -- a single component, no
+  // chain to fall through past -- so this closes over hapi::Nil directly.
+  // Instantiate with Sample==Accum (e.g. a narrow ac_int) to get 2's-
+  // complement wraparound instead of headroom; this is the same
+  // accumulate-and-return-the-running-total shape Pid's Integrator uses
+  // internally, exposed here as its own reusable component.
+  template<typename Sample, typename Accum>
+  struct AccumulateLogic {
+    template<typename I>
+    struct Part : I {
+      using Base = I;
+      using Base::Base;
+      Accum accumulate(Sample x) {
+        Base::set(Base::get() + Accum(x));
+        return Base::get();
+      }
+    };
+  };
+  template<typename Sample, typename Accum>
+  using AccumulatorChain = Chain<AccumulateLogic<Sample,Accum>, Data<Accum>>;
+
+  template<typename Sample, typename Accum>
+  struct Accumulator : APIOf<Nil, AccumulatorChain<Sample,Accum>> {
+    using Base = APIOf<Nil, AccumulatorChain<Sample,Accum>>;
+    using Base::Base;
+    Accum step(Sample x) { return Base::accumulate(x); }
+  };
+
+  // ── ComplexMac ───────────────────────────────────────────────────────
+  // Complex<T> is OneHLS's own plain struct-of-two-fields -- deliberately
+  // NOT a vendor complex type (ac_complex<T> is HLSLibs-only, ap_types has
+  // no equivalent), so ComplexMac stays exactly as vendor-agnostic as
+  // every other component here. Both re/im arithmetic go through T's own
+  // +/-/* operators, which ac_fixed and ap_fixed both provide natively.
+  //
+  // Resource note: at wide enough Sample/Accum (e.g. 32-bit complex, 64
+  // raw bits total) this is the one component in this library observed
+  // to bind its Data<Complex<Accum>> state to a real BRAM primitive under
+  // Bambu instead of the lightweight distributed RAM every other
+  // component gets -- correct, reproducible, just NOT zero-cost the way
+  // Fir/Biquad/Pid/Accumulator are. See README's verified-results table.
+  template<typename T>
+  struct Complex {
+    T re{};
+    T im{};
+  };
+  template<typename T>
+  constexpr Complex<T> operator+(Complex<T> a, Complex<T> b) {
+    return Complex<T>{ T(a.re + b.re), T(a.im + b.im) };
+  }
+  template<typename T>
+  constexpr Complex<T> operator*(Complex<T> a, Complex<T> b) {
+    return Complex<T>{ T(a.re*b.re - a.im*b.im), T(a.re*b.im + a.im*b.re) };
+  }
+
+  template<typename Sample, typename Accum, int32_t CoeffReRawBits, int32_t CoeffImRawBits>
+  struct ComplexMacLogic {
+    template<typename I>
+    struct Part : I {
+      using Base = I;
+      using Base::Base;
+      Complex<Accum> cmac(Complex<Sample> x) {
+        Complex<Accum> coeff{ Accum(rawCoeff<Sample,CoeffReRawBits>()), Accum(rawCoeff<Sample,CoeffImRawBits>()) };
+        Complex<Accum> xw{ Accum(x.re), Accum(x.im) };
+        Base::set(Base::get() + xw * coeff);
+        return Base::get();
+      }
+    };
+  };
+  template<typename Sample, typename Accum, int32_t CoeffReRawBits, int32_t CoeffImRawBits>
+  using ComplexMacChain = Chain<ComplexMacLogic<Sample,Accum,CoeffReRawBits,CoeffImRawBits>, Data<Complex<Accum>>>;
+
+  template<typename Sample, typename Accum, int32_t CoeffReRawBits, int32_t CoeffImRawBits>
+  struct ComplexMac : APIOf<Nil, ComplexMacChain<Sample,Accum,CoeffReRawBits,CoeffImRawBits>> {
+    using Base = APIOf<Nil, ComplexMacChain<Sample,Accum,CoeffReRawBits,CoeffImRawBits>>;
+    using Base::Base;
+    Complex<Accum> step(Complex<Sample> x) { return Base::cmac(x); }
+  };
 }
