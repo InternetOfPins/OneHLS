@@ -159,6 +159,12 @@ See [.RnD/hls/fir_std_float_top.cpp](.RnD/hls/fir_std_float_top.cpp).
 
 ---
 
+## See also
+
+[ECOSYSTEM.md](ECOSYSTEM.md) — where OneHLS sits relative to `ac_math`/`ac_dsp`, AMD/Intel HLS tooling, MatchLib, and FINN, plus a shortlist of algorithms worth borrowing next.
+
+---
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
