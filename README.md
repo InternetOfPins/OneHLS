@@ -127,7 +127,9 @@ Bambu HLS synthesis (`xc7a100t-1csg324-VVD`, 10 ns clock, `ac_fixed` instantiati
 
 See [test/test.cpp](test/test.cpp) for the native regression suite and [.RnD/hls/](.RnD/hls/) for the Bambu synthesis targets.
 
-**`ComplexMac<>` is not zero-cost.** At 64 raw bits (`Complex<ac_fixed<32,32,true>>`), Bambu binds the accumulator to a real BRAM primitive (dual-port controller, address decoding) instead of the lightweight distributed RAM every other component here gets — reproducible and correct, just a different resource profile, not a defect. This was first observed with the vendor's own `ac_complex<T>` and has been re-confirmed to reproduce identically with OneHLS's own `Complex<T>`, so it's a property of the width/access pattern, not of any one struct definition. The exact Bambu-internal trigger for the threshold was not traced further.
+**`ComplexMac<>` is not zero-cost.** At 64 raw bits (`Complex<ac_fixed<32,32,true>>`), Bambu binds the accumulator to a real BRAM primitive (dual-port controller, address decoding) instead of the lightweight distributed RAM every other component here gets — reproducible and correct, just a different resource profile, not a defect. This was first observed with the vendor's own `ac_complex<T>` and has been re-confirmed to reproduce identically with OneHLS's own `Complex<T>`, so it's a property of the width/access pattern, not of any one struct definition.
+
+Tested directly (2026-08-17) whether Bambu's own memory-allocation flags explain it — they don't, cleanly. Raising `--distram-threshold` (the size cutoff Bambu uses to pick distributed RAM, default 256 bits) to 4096 — far past the actual 64-bit state — changed nothing: identical BRAM binding, ruling out a simple size threshold outright. `--memory-allocation-policy=NO_BRAM` does remove the BRAM primitives, but doesn't reproduce the other components' clean internal distributed RAM either: it reports the state as *external* to the top module (a real memory-mapped interface, not self-contained) and costs *more* flip-flops, not fewer (287 → 383). The underlying trigger in Bambu's own memory-classification logic remains untraced — a real, tested negative result, not an unexamined assumption.
 
 ---
 
@@ -143,7 +145,9 @@ See [test/test.cpp](test/test.cpp) for the native regression suite and [.RnD/hls
   | `Fir<>` over `ac_fixed` (baseline) | 62 | 7679 | 0 | distributed RAM |
   | `Fir<>` over `ac_std_float` | 3670 | 22682 | 12 | **BRAM** (17 controller instances) |
 
-  ~59× the flip-flops, ~3× the area, and real DSP usage where fixed-point used none. This **confirms** conventional floating-point-on-FPGAs cost expectations rather than contradicting them — a real, expected finding, not an anomaly. The BRAM binding matches the same wide/complex-type pattern already seen with `ComplexMac<>`, not something specific to floating point.
+  ~59× the flip-flops, ~3× the area, and real DSP usage where fixed-point used none. This **confirms** conventional floating-point-on-FPGAs cost expectations rather than contradicting them — a real, expected finding, not an anomaly.
+
+  The BRAM binding looks superficially like the same pattern seen with `ComplexMac<>`, but tested (2026-08-17) rather than assumed identical: the same `--distram-threshold`/`--memory-allocation-policy=NO_BRAM` experiments produce the same qualitative result (threshold has zero effect; `NO_BRAM` removes BRAM but nearly doubles the top function's flip-flops, 614 → 1123) — except `NO_BRAM` here externalizes **21 variables**, including an internal `ac_types` library lookup table (`ac_private::iv_leading_bits`) used by `ac_std_float`'s own normalization logic, versus exactly one (`cmac` itself) for `ComplexMac<>`. That's a much broader footprint, so despite the resemblance this is more likely a *different* root cause rooted in `ac_std_float`'s own arithmetic implementation, not the same wide/complex-type mechanism as `ComplexMac<>`.
 
 See [.RnD/hls/fir_std_float_top.cpp](.RnD/hls/fir_std_float_top.cpp).
 
