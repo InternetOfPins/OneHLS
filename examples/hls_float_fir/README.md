@@ -58,16 +58,20 @@ pio run -e native -t exec
 `env:native` and `env:hls` — no manual `platformio.ini` editing needed.
 
 **HLS synthesis** (also requires `BAMBU_APPIMAGE` — see `extra_hls.py`).
-Run a normal build once first so PlatformIO actually fetches HAPI/OneData
-into `.pio/libdeps/hls/` — the custom target below reads its `-I` paths
-from there, the same resolved copies the native build uses, rather than
-assuming any particular local checkout layout:
+No need for a normal build to succeed first: PlatformIO resolves
+`lib_deps` during environment setup regardless of which target runs, so
+the custom target below fetches HAPI/OneData into `.pio/libdeps/hls/`
+(the same resolved copies a native build would use) as a side effect,
+without ever needing `src/main.cpp` itself to compile:
 
 ```
 export BAMBU_APPIMAGE=/path/to/bambu-2024.10.AppImage
-pio run -e hls            # fetches lib_deps; fails on ac_std_float.h, that's expected here
 pio run -e hls -t synthesize-float-fir
 ```
+
+(A plain `pio run -e hls`, with no `-t`, tries to compile `src/main.cpp`
+as a normal build and fails on `ac_std_float.h` unless `AC_TYPES_INCLUDE`
+is also set — expected, and not something the custom target above needs.)
 
 ## Results (verified, not estimated)
 
