@@ -171,6 +171,7 @@ See [.RnD/hls/fir_std_float_top.cpp](.RnD/hls/fir_std_float_top.cpp).
 - [`examples/hls_float_fir`](examples/hls_float_fir) — `Fir<>` over real IEEE754 floating point (`ac_std_float`), same template unmodified.
 - [`examples/hls_cic_decimator`](examples/hls_cic_decimator) — a genuinely multirate (N-in/1-out) CIC decimator, byte-for-byte diffed zero-cost vs. a hand-written monolithic version.
 - [`examples/hls_polyphase_fir`](examples/hls_polyphase_fir) — a polyphase FIR decimator built on `oneHLS::StaticList<>`, this library's general-purpose heterogeneous-list utility.
+- [`examples/hls_nco`](examples/hls_nco) — a numerically controlled oscillator that composes `ac_math::ac_sin_cordic`/`ac_cos_cordic` directly, the one example in this library that borrows an external HLS primitive as-is instead of reimplementing it.
 
 **Research** — the CIC and polyphase examples above came out of an internal study of what OneHLS/HAPI can borrow from NVIDIA CuTe/CUTLASS's composition discipline, kept as dev notes in `.RnD/docs/` (not part of the published repo), including a real HAPI bug found along the way.
 

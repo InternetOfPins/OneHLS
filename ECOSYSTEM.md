@@ -56,7 +56,7 @@ Vitis compatibility by lineage.
 
 ---
 
-## Borrowed-algorithm shortlist (candidates, not yet built)
+## Borrowed-algorithm shortlist (2 of 3 now built and verified)
 
 Siemens HLSLibs also publishes `ac_math` (parameterized synthesizable
 math: elementary functions, CORDIC trig, PWL approximations, linear
@@ -72,9 +72,18 @@ incompatible with HAPI's `Chain<>` composition. Using them means
 reimplementing the *algorithm*, fresh, in OneHLS's own logic/`Data<T>`
 idiom — the same way `Fir`/`Biquad`/`Pid`/`Accumulator` were always
 original designs, never ports of someone else's exact code. Three
-candidates surfaced, in order of fit:
+candidates surfaced, in order of fit — two turned out to need exactly
+that reimplementation (CIC, polyphase FIR); the third (NCO) turned out
+to be the one real exception, genuinely composing an `ac_math` primitive
+directly instead — see its own section below:
 
-### CIC decimator/interpolator — strongest fit
+### CIC decimator/interpolator — strongest fit, built
+
+**Built and verified**: [`examples/hls_cic_decimator`](examples/hls_cic_decimator)
+— `CicDecimator<>`, Bambu-synthesized (226 FF / area 9557 / 0 DSPs),
+diffed **line-for-line identical** to a hand-written monolithic version.
+The design questions below are the derivation; see the example's own
+README for verified results.
 
 A Cascaded Integrator-Comb filter is, structurally, two things OneHLS
 already has:
@@ -99,33 +108,43 @@ N-in/1-out, an interpolator is 1-in/N-out. A `bool& valid` out-param (or
 some other departure from the current calling shape) is a real design
 decision for whoever implements this, not a mechanical detail.
 
-### NCO (numerically controlled oscillator)
+### NCO (numerically controlled oscillator) — built, the one direct-composition case
 
-A phase accumulator feeding `ac_math::ac_sincos_cordic` — a pure,
-stateless function (no internal state to reimplement, just call it).
-One call returns both sine and cosine by reference. Its angle convention
-is *radians scaled by 1/π* (range ≈ [-1,1) ≡ [-π,π)), with range
-reduction done by truncating the angle type's integer width to 1 bit —
-an ordinary 2's-complement wraparound. That means a phase accumulator
-sized exactly to this angle type wraps into the correct domain for free
-via `Accumulator<Sample,Accum>` with `Sample==Accum` — the exact
-same-type-wraparound behavior already shipped and tested
-(`Accumulator<ac_int<8,true>>`'s `50 100 -106`). Output naturally fits
-the existing `Complex<Sample>` type from `ComplexMac`.
+**Built and verified**: [`examples/hls_nco`](examples/hls_nco) —
+`Nco<>`, a phase accumulator (`Accumulator<Sample,Sample>`, reused
+unmodified) feeding `ac_math::ac_sincos_cordic` — a pure, stateless
+function, called **directly**, not reimplemented. This is the one
+component in this whole shortlist that genuinely composes an external
+`ac_math` primitive as-is, rather than reimplementing the algorithm the
+way `CicDecimator`/`Fir`/`Biquad`/`Pid` all do — the direct-composition
+claim from the top of this document, actually demonstrated.
 
-Interesting because it's signal *generation*, complementing the
-library's existing signal-*processing* components — and because it
-needs zero new state-holding machinery, only the CORDIC call itself
-wrapped around two primitives OneHLS already has.
+Its angle convention is *radians scaled by 1/π* (range ≈ [-1,1) ≡
+[-π,π)), and a phase accumulator sized exactly to this — `Sample =
+ac_fixed<W,1,true>` — wraps into the correct domain for free via 2's
+complement overflow, the exact same-type-wraparound behavior already
+shipped and tested (`Accumulator<ac_int<8,true>>`'s `50 100 -106`). A
+real, non-obvious gotcha turned up building it, undocumented upstream:
+`ac_sin_cordic`/`ac_cos_cordic`'s internal `scale = 1.0` constant is
+typed from the *output* argument, and silently wraps to `-1.0` under
+`AC_WRAP` if that output type only has 1 integer bit — fixed by giving
+the output its own wider `Accum` type (OneHLS's existing Sample/Accum
+convention, applied correctly), while the phase/angle side stays `AI=1`
+unmodified. See the example's README for the full derivation and
+verified Bambu numbers (BRAM-bound, 0 DSPs — the BRAM binding traces to
+`ac_sincos_cordic`'s own internal lookup tables, not anything OneHLS
+added).
 
-### Polyphase FIR decimation/interpolation — a different family
+### Polyphase FIR decimation/interpolation — a different family, built
 
-`ac_poly_dec`/`ac_poly_intr` were initially assumed to be a CIC variant;
-reading them in full shows otherwise — they're coefficient/MAC-driven
-tapped delay lines, structurally close to `Fir<>`/`Tap<>`, not to
-`Accumulator`/CIC's integrator-comb shape. Worth a real look in a later
-round as a rate-changing sibling of `Fir<>`, not bundled with the CIC
-work above.
+**Built and verified**: [`examples/hls_polyphase_fir`](examples/hls_polyphase_fir)
+— `PolyphaseFirDecim<>`, built on `oneHLS::StaticList<>`. `ac_poly_dec`/
+`ac_poly_intr` were initially assumed to be a CIC variant; reading them
+in full showed otherwise — they're coefficient/MAC-driven tapped delay
+lines, structurally close to `Fir<>`/`Tap<>`, not to `Accumulator`/CIC's
+integrator-comb shape. What got built is an original design in that
+family, not a port of `ac_poly_dec`/`ac_poly_intr`'s own code — see the
+example's README for verified results at M=2/M=4.
 
 ---
 
