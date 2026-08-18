@@ -24,11 +24,9 @@ Every other component in this library is `.step()`-in/`.step()`-out at
 a fixed rate. Building a genuinely multirate structure was the actual
 test: does HAPI composition (`Accumulator<>` reused, one new `Comb` atom)
 stay zero-cost once the shape gets harder than "filter one sample,
-return one sample"? It does — see Results below, and
-[docs/PHASE4_CIC_EXPERIMENT.md](../../docs/PHASE4_CIC_EXPERIMENT.md) for
-the full derivation and a **byte-for-byte diffed** comparison against a
-hand-written, non-generic monolithic implementation (identical resource
-counts, not just similar).
+return one sample"? It does — see Results below, a **byte-for-byte
+diffed** comparison against a hand-written, non-generic monolithic
+implementation (identical resource counts, not just similar).
 
 ## Target device
 

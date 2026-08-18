@@ -172,7 +172,7 @@ See [.RnD/hls/fir_std_float_top.cpp](.RnD/hls/fir_std_float_top.cpp).
 - [`examples/hls_cic_decimator`](examples/hls_cic_decimator) — a genuinely multirate (N-in/1-out) CIC decimator, byte-for-byte diffed zero-cost vs. a hand-written monolithic version.
 - [`examples/hls_polyphase_fir`](examples/hls_polyphase_fir) — a polyphase FIR decimator built on `oneHLS::StaticList<>`, this library's general-purpose heterogeneous-list utility.
 
-**Research** — [docs/CUTE_STUDY.md](docs/CUTE_STUDY.md) is the entry point into an ongoing study of what OneHLS/HAPI can borrow from NVIDIA CuTe/CUTLASS's composition discipline; links from there cover the full derivation behind the CIC and polyphase examples above, including a real HAPI bug found along the way.
+**Research** — the CIC and polyphase examples above came out of an internal study of what OneHLS/HAPI can borrow from NVIDIA CuTe/CUTLASS's composition discipline, kept as dev notes in `.RnD/docs/` (not part of the published repo), including a real HAPI bug found along the way.
 
 ---
 

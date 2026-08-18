@@ -20,14 +20,12 @@ exists for exactly this case.
 
 This example — specifically, the boilerplate problem of hand-writing a
 new decimator's branches/flags/dispatch by hand for every `M` — is what
-`StaticList` was built and promoted to solve. See
-[docs/PHASE9_GENERIC_POLYPHASE.md](../../docs/PHASE9_GENERIC_POLYPHASE.md)
-for the full derivation: five different internal designs were tried and
-Bambu-synthesized before landing on this one (`StaticList`'s non-empty
-list shape + runtime `visit()` dispatch), including a real HAPI bug found
-and worked around along the way, and a genuine, still-open resource
-trade-off (see Results below) — this example is the "graduated" result,
-not the whole story.
+`StaticList` was built and promoted to solve. Five different internal
+designs were tried and Bambu-synthesized before landing on this one
+(`StaticList`'s non-empty list shape + runtime `visit()` dispatch),
+including a real HAPI bug found and worked around along the way, and a
+genuine, still-open resource trade-off (see Results below) — this
+example is the "graduated" result, not the whole story.
 
 **This is research code, not yet part of the stable library.**
 `StaticList` itself is real and promoted (`include/oneHLS/staticList.h`)
@@ -81,8 +79,7 @@ The `platformio.ini`/`extra_hls.py` scaffolding follows
 
 Native, exact — the real, Tap-delayed `Fir<>` impulse/DC response for
 these coefficients, downsampled (an idealized, non-pipelined reference
-model gives the wrong answer here — see
-`docs/PHASE4_POLYPHASE_EXPERIMENT.md` §2 for why):
+model gives the wrong answer here):
 
 | | Sequence |
 |---|---|
@@ -99,12 +96,11 @@ For scale, against the hand-written (non-generic, no `StaticList`) M=2
 decimator this library's own research arrived at first: 550 FF / area
 1895 / slack 1.312ns. This generic version wins substantially on area
 (−46%) but gives up real timing margin (0.497ns vs. 1.312ns) — a genuine,
-still-open trade-off, not glossed over. `docs/PHASE9_GENERIC_POLYPHASE.md`
-§6 diffs five different internal designs against each other and explains
-why: list representation and dispatch mechanism interact in a way that
-isn't simply additive, and the variant used here (non-empty list +
-`visit()`) is the best balance found so far — not a fully closed
-question.
+still-open trade-off, not glossed over. List representation and dispatch
+mechanism interact in a way that isn't simply additive; the variant used
+here (non-empty list + `visit()`) is the best balance found so far, from
+five different internal designs diffed against each other — not a fully
+closed question.
 
 ## Files
 
