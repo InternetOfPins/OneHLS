@@ -37,6 +37,23 @@ over it with zero code changes, at a resource cost matching conventional
 floating-point-on-FPGA expectations (~59× the flip-flops, ~3× the area,
 real DSP usage, vs. the `ac_fixed` baseline).
 
+### A second synthesis toolchain, not just a second number format
+
+Bambu has been the only HLS *tool* run against any of this so far — every
+comparison above is a numeric-backend swap on the same synthesizer.
+**AMD Vitis HLS** now provides an independent second toolchain: HAPI's
+own composition primitives (`Chain<>`, the same machinery `Fir<>`/
+`Biquad<>`/`Pid<>` are built from) synthesize cleanly under Vitis HLS,
+confirmed against several designs in
+[`HAPI/examples/hls_fir`](../HAPI/examples/hls_fir/README.md),
+[`hls_can_disabler`](../HAPI/examples/hls_can_disabler/README.md), and
+[`hls_smoke`](../HAPI/examples/hls_smoke/README.md) — real RTL, real
+resource reports, on a second vendor's own tool. OneHLS's own
+`ac_fixed`-typed components haven't been run through Vitis HLS
+specifically yet; that's the natural next step to make the `ac_types` row
+above independently confirmed the same way `ap_types` already implies
+Vitis compatibility by lineage.
+
 ---
 
 ## Borrowed-algorithm shortlist (candidates, not yet built)
