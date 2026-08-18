@@ -95,7 +95,7 @@ Opt-in, included alongside the vendor's own headers — `oneHLS.h` itself names 
 
 | Header | Vendor | Notes |
 |---|---|---|
-| `oneHLS/ac_types_support.h` | [hlslibs/ac_types](https://github.com/hlslibs/ac_types) | `RawBitsCtor` via `set_slc`. Full native + Bambu synthesis verified. |
+| `oneHLS/ac_types_support.h` | [hlslibs/ac_types](https://github.com/hlslibs/ac_types) | `RawBitsCtor` via `set_slc`. Full native + Bambu **and** Vitis HLS synthesis verified. |
 | `oneHLS/ap_types_support.h` | [Xilinx/HLS_arbitrary_Precision_Types](https://github.com/Xilinx/HLS_arbitrary_Precision_Types) | `RawBitsCtor` via `.range(Hi,Lo)=`. Native/composition verified only — real upstream `ap_types` has been observed not to synthesize under Bambu in practical time; this is a Bambu limitation, not a OneHLS or `ap_types` one. |
 
 Neither vendor library is vendored into this repo — clone them yourself and point your include path at them.
@@ -130,6 +130,24 @@ See [test/test.cpp](test/test.cpp) for the native regression suite and [.RnD/hls
 **`ComplexMac<>` is not zero-cost.** At 64 raw bits (`Complex<ac_fixed<32,32,true>>`), Bambu binds the accumulator to a real BRAM primitive (dual-port controller, address decoding) instead of the lightweight distributed RAM every other component here gets — reproducible and correct, just a different resource profile, not a defect. This was first observed with the vendor's own `ac_complex<T>` and has been re-confirmed to reproduce identically with OneHLS's own `Complex<T>`, so it's a property of the width/access pattern, not of any one struct definition.
 
 Tested directly (2026-08-17) whether Bambu's own memory-allocation flags explain it — they don't, cleanly. Raising `--distram-threshold` (the size cutoff Bambu uses to pick distributed RAM, default 256 bits) to 4096 — far past the actual 64-bit state — changed nothing: identical BRAM binding, ruling out a simple size threshold outright. `--memory-allocation-policy=NO_BRAM` does remove the BRAM primitives, but doesn't reproduce the other components' clean internal distributed RAM either: it reports the state as *external* to the top module (a real memory-mapped interface, not self-contained) and costs *more* flip-flops, not fewer (287 → 383). The underlying trigger in Bambu's own memory-classification logic remains untraced — a real, tested negative result, not an unexamined assumption.
+
+### Also verified under AMD Vitis HLS 2026.1
+
+Same five components, same `ac_fixed` instantiations/coefficients, same target part (`xc7a100tcsg324-1`), same 10ns clock — a second, independent vendor toolchain, run 2026-08-18 against a real 2026.1 install (see [.RnD/hls/](.RnD/hls/) for the shared synthesis targets; Vitis reports LUT/FF/DSP directly, no unified "area" score):
+
+| Component | Flip-flops | LUTs | DSPs | State binding |
+|---|---|---|---|---|
+| `Fir<>` (4-tap) | 85 | 112 | 2 | registers |
+| `Biquad<>` | 109 | 280 | 0 | registers |
+| `Pid<>` | 49 | 111 | 0 | registers |
+| `Accumulator<>` (8-bit) | 9 | 15 | 0 | registers |
+| `ComplexMac<>` | 65 | 128 | 0 | registers |
+
+Clean synthesis, zero real warnings (only the same benign vendor-header noise seen elsewhere — `ac_int.h`'s own "shifting a negative signed value" / "unknown pragma" notes, not anything in OneHLS's own code).
+
+`Fir<>` is the one case where the two tools genuinely diverge on strategy, not just numbers: Bambu strength-reduces the compile-time coefficients (10, 118, 118, 10) to pure shift/add (0 DSPs); Vitis instead maps them to 2 real DSP blocks. Same pattern already documented in HAPI's own `hls_fir` example — two valid, differently-tuned backend choices for identical source, not a discrepancy. Every other component's coefficients here are exact powers of two (128/64/-64, 256/64/128, 2/-1), so both tools agree on 0 DSPs regardless of backend.
+
+**The real headline: `ComplexMac<>`'s BRAM binding is a Bambu-specific choice, not an inherent property of the design.** Under Vitis, the same `Complex<ac_fixed<32,32,true>>` state is **not** bound to any memory primitive at all — Vitis's own report shows "No bind storage info in design" and an inferred `ARRAY_PARTITION type=complete` pragma that flattens the struct straight into plain registers (65 FF total, actually the *cheapest* of all five components under Vitis, not the most expensive). This directly answers the open question left above: the "underlying trigger in Bambu's own memory-classification logic" is exactly that — Bambu's own heuristic, not something the width/access-pattern of this state makes unavoidable on any HLS tool.
 
 ---
 

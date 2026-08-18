@@ -39,20 +39,40 @@ real DSP usage, vs. the `ac_fixed` baseline).
 
 ### A second synthesis toolchain, not just a second number format
 
-Bambu has been the only HLS *tool* run against any of this so far — every
-comparison above is a numeric-backend swap on the same synthesizer.
-**AMD Vitis HLS** now provides an independent second toolchain: HAPI's
-own composition primitives (`Chain<>`, the same machinery `Fir<>`/
-`Biquad<>`/`Pid<>` are built from) synthesize cleanly under Vitis HLS,
-confirmed against several designs in
-[`HAPI/examples/hls_fir`](../HAPI/examples/hls_fir/README.md),
-[`hls_can_disabler`](../HAPI/examples/hls_can_disabler/README.md), and
-[`hls_smoke`](../HAPI/examples/hls_smoke/README.md) — real RTL, real
-resource reports, on a second vendor's own tool. OneHLS's own
-`ac_fixed`-typed components haven't been run through Vitis HLS
-specifically yet; that's the natural next step to make the `ac_types` row
-above independently confirmed the same way `ap_types` already implies
-Vitis compatibility by lineage.
+**Confirmed 2026-08-18, against a real AMD Vitis HLS 2026.1 install**
+(`/media/azevedo/salga/Xilinx/2026.1/`). Two independent layers were
+checked:
+
+- HAPI's own composition primitives (`Chain<>`, the machinery `Fir<>`/
+  `Biquad<>`/`Pid<>` are built from) synthesize cleanly under Vitis HLS,
+  confirmed against several designs in
+  [`HAPI/examples/hls_fir`](../HAPI/examples/hls_fir/README.md),
+  [`hls_can_disabler`](../HAPI/examples/hls_can_disabler/README.md), and
+  [`hls_smoke`](../HAPI/examples/hls_smoke/README.md) — real RTL, real
+  resource reports, on a second vendor's own tool.
+- **OneHLS's own five core `ac_fixed`-typed components** (`Fir<>`,
+  `Biquad<>`, `Pid<>`, `Accumulator<>`, `ComplexMac<>`) were then run
+  directly, closing the gap this section used to flag as open — see the
+  main [README.md](README.md#also-verified-under-amd-vitis-hls-2026)'s
+  own "Also verified under AMD Vitis HLS 2026.1" section for the full
+  numbers. The `ac_types` row in the table above is now independently
+  confirmed by a second toolchain, not just implied by `ap_types`'s
+  lineage.
+
+**The most interesting result wasn't a number match — it was a real
+divergence.** `ComplexMac<>`'s BRAM binding under Bambu (the one
+non-zero-cost component in this whole library, see README) turned out to
+be a Bambu-specific heuristic, not an inherent property of the
+`Complex<ac_fixed<32,32,true>>` state: under Vitis HLS, the same design
+binds to **zero** memory primitives — Vitis's own report says "No bind
+storage info in design" and shows an inferred `ARRAY_PARTITION
+type=complete` pragma flattening the struct into plain registers,
+landing as the *cheapest* of all five components (65 FF) rather than the
+most expensive. This is exactly the kind of cross-tool check this
+section exists for: a single-toolchain finding (Bambu's BRAM binding)
+that looked like it might be a real design property turned out to be a
+backend-specific choice once a second, independent tool was actually
+run.
 
 ---
 
