@@ -125,7 +125,7 @@ Bambu HLS synthesis (`xc7a100t-1csg324-VVD`, 10 ns clock, `ac_fixed` instantiati
 | `Accumulator<>` (8-bit) | 32 | 1880 | 0 | distributed RAM |
 | `ComplexMac<>` | 287 | 1108 | 0 | **BRAM** (see caveat below) |
 
-See [test/test.cpp](test/test.cpp) for the native regression suite and [.RnD/hls/](.RnD/hls/) for the Bambu synthesis targets.
+See [test/test.cpp](test/test.cpp) for the native regression suite and [examples/hls_core_components/](examples/hls_core_components/) for the Bambu synthesis targets, reproducible from a clean clone.
 
 **`ComplexMac<>` is not zero-cost.** At 64 raw bits (`Complex<ac_fixed<32,32,true>>`), Bambu binds the accumulator to a real BRAM primitive (dual-port controller, address decoding) instead of the lightweight distributed RAM every other component here gets — reproducible and correct, just a different resource profile, not a defect. This was first observed with the vendor's own `ac_complex<T>` and has been re-confirmed to reproduce identically with OneHLS's own `Complex<T>`, so it's a property of the width/access pattern, not of any one struct definition.
 
@@ -133,7 +133,7 @@ Tested directly (2026-08-17) whether Bambu's own memory-allocation flags explain
 
 ### Also verified under AMD Vitis HLS 2026.1
 
-Same five components, same `ac_fixed` instantiations/coefficients, same target part (`xc7a100tcsg324-1`), same 10ns clock — a second, independent vendor toolchain, run 2026-08-18 against a real 2026.1 install (see [.RnD/hls/](.RnD/hls/) for the shared synthesis targets; Vitis reports LUT/FF/DSP directly, no unified "area" score):
+Same five components, same `ac_fixed` instantiations/coefficients, same target part (`xc7a100tcsg324-1`), same 10ns clock — a second, independent vendor toolchain, run 2026-08-18 against a real 2026.1 install (see [examples/hls_core_components/](examples/hls_core_components/) for the shared synthesis targets; Vitis reports LUT/FF/DSP directly, no unified "area" score):
 
 | Component | Flip-flops | LUTs | DSPs | State binding |
 |---|---|---|---|---|
