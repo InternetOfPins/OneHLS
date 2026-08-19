@@ -1,0 +1,32 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (lin64) Build 6511674 Tue Jun 16 11:01:26 MDT 2026
+| Date         : Wed Aug 19 15:59:29 2026
+| Host         : neurux running 64-bit Ubuntu 24.04.3 LTS
+| Command      : report_utilization -hierarchical -file HLS_output/Synthesis/vivado_flow/post_place_util_hier.rpt
+| Design       : _Z12oneHlsFirTops
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Fully Placed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-------------------------+----------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+|         Instance        |           Module           | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | DSP Blocks |
++-------------------------+----------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+| _Z12oneHlsFirTops       |                      (top) |        185 |        185 |       0 |    0 | 129 |      0 |      0 |          0 |
+|   (_Z12oneHlsFirTops)   |                      (top) |          0 |          0 |       0 |    0 |   0 |      0 |      0 |          0 |
+|   __Z12oneHlsFirTops_i0 |         __Z12oneHlsFirTops |        185 |        185 |       0 |    0 | 129 |      0 |      0 |          0 |
+|     Datapath_i          | datapath__Z12oneHlsFirTops |        182 |        182 |       0 |    0 | 126 |      0 |      0 |          0 |
++-------------------------+----------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

@@ -75,6 +75,9 @@ is also set — expected, and not something the custom target above needs.)
 
 ## Results (verified, not estimated)
 
+Raw Bambu synthesis log backing the numbers below: [results/bambu_synthesis.txt](results/bambu_synthesis.txt)
+(the full `.hls_out_float_fir/` build output itself is gitignored/regenerable — only the log is preserved here).
+
 Native, exact — both sequences hand-derivable and checked bit-for-bit:
 
 | | Sequence |

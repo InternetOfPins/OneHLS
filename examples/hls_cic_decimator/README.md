@@ -83,6 +83,9 @@ underlying synthesis result.*
 
 ## Results (verified, not estimated)
 
+Raw Bambu synthesis log backing the numbers below: [results/bambu_synthesis.txt](results/bambu_synthesis.txt)
+(the full `.hls_out_cic_decimator/` build output itself is gitignored/regenerable — only the log is preserved here).
+
 Native, exact — both sequences independently derived by simulating the
 architecture directly (not a textbook formula), cross-checked against a
 separate DC-gain identity ((R·M)^N):

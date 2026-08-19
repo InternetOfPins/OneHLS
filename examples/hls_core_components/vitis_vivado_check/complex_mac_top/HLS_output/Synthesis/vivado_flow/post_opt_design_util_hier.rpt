@@ -1,0 +1,28 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (lin64) Build 6511674 Tue Jun 16 11:01:26 MDT 2026
+| Date         : Wed Aug 19 16:29:40 2026
+| Host         : neurux running 64-bit Ubuntu 24.04.3 LTS
+| Command      : report_utilization -hierarchical -file HLS_output/Synthesis/vivado_flow/post_opt_design_util_hier.rpt
+| Design       : oneHlsComplexMacTop
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Optimized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------+--------+------------+------------+---------+------+-----+--------+--------+------------+
+|       Instance      | Module | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | DSP Blocks |
++---------------------+--------+------------+------------+---------+------+-----+--------+--------+------------+
+| oneHlsComplexMacTop |  (top) |         98 |         98 |       0 |    0 |  64 |      0 |      0 |          0 |
++---------------------+--------+------------+------------+---------+------+-----+--------+--------+------------+
+
+

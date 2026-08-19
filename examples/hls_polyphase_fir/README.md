@@ -77,6 +77,9 @@ The `platformio.ini`/`extra_hls.py` scaffolding follows
 
 ## Results (verified, not estimated)
 
+Raw Bambu synthesis log backing the numbers below: [results/bambu_synthesis.txt](results/bambu_synthesis.txt)
+(the full `.hls_out_polyphase_fir/` build output itself is gitignored/regenerable — only the log is preserved here).
+
 Native, exact — the real, Tap-delayed `Fir<>` impulse/DC response for
 these coefficients, downsampled (an idealized, non-pipelined reference
 model gives the wrong answer here):

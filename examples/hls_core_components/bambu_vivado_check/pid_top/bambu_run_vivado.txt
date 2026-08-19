@@ -1,0 +1,345 @@
+ ==  Bambu executed with: $BAMBU_APPIMAGE -I$ONEHLS_INC -I$HAPI_INC -I$ONEDATA_INC -I$AC_TYPES_INC --std=gnu++17 --compiler=I386_CLANG16 --device-name=xc7a100t-1csg324-VVD --clock-period=10 --top-fname=oneHlsPidTop --evaluation=AREA,CLOCK_SLACK,DSPS,FREQUENCY,PERIOD,REGISTERS -v2 hls/pid_top.cpp 
+
+
+********************************************************************************
+                    ____                  _
+                   | __ )  __ _ _ __ ___ | |_   _   _
+                   |  _ \ / _` | '_ ` _ \| '_ \| | | |
+                   | |_) | (_| | | | | | | |_) | |_| |
+                   |____/ \__,_|_| |_| |_|_.__/ \__,_|
+
+********************************************************************************
+                         High-Level Synthesis Tool
+
+                         Politecnico di Milano - DEIB
+                          System Architectures Group
+********************************************************************************
+                Copyright (C) 2004-2024 Politecnico di Milano
+ Version: PandA 2024.10 - Revision c2ba6936ca2ed63137095fea0b630a1c66e20e63-main
+
+Parameters parsed in 0.00 seconds
+
+Library Name     : STD_FU
+  Total cells    : 3
+  - combinational: 0
+  - others: 3
+
+Library Name     : STD_FU
+  Total cells    : 10
+  - combinational: 0
+  - others: 10
+
+Library Name     : STD_FU
+  Total cells    : 33
+  - combinational: 0
+  - others: 33
+
+Library Name     : STD_FU
+  Total cells    : 8
+  - combinational: 0
+  - others: 8
+
+Library Name     : STD_FU
+  Total cells    : 56
+  - combinational: 0
+  - others: 56
+
+Library Name     : STD_FU
+  Total cells    : 1
+  - combinational: 0
+  - others: 1
+
+Library Name     : CS_COMPONENT
+  Total cells    : 16
+  - combinational: 0
+  - others: 16
+
+Library Name     : STD_FU
+  Total cells    : 2
+  - combinational: 0
+  - others: 2
+
+Library Name     : STD_FU
+  Total cells    : 0
+  - combinational: 0
+  - others: 0
+
+Library Name     : STD_FU
+  Total cells    : 3
+  - combinational: 0
+  - others: 3
+
+Library Name     : STD_FU
+  Total cells    : 21
+  - combinational: 0
+  - others: 21
+
+Library Name     : STD
+  Total cells    : 20
+  - combinational: 0
+  - others: 20
+
+Library Name     : STD_COMMON
+  Total cells    : 66
+  - combinational: 0
+  - others: 66
+
+Library Name     : STD_FU
+  Total cells    : 10
+  - combinational: 0
+  - others: 10
+
+Library Name     : STD_PC
+  Total cells    : 16
+  - combinational: 0
+  - others: 16
+
+Library Name     : STD_SOFT_FLOAT
+  Total cells    : 2
+  - combinational: 0
+  - others: 2
+
+Library Name     : STD
+  Total cells    : 98
+  - combinational: 0
+  - others: 98
+
+Library Name     : STD_FU
+  Total cells    : 2
+  - combinational: 0
+  - others: 2
+
+Library Name     : STD_FU
+  Total cells    : 9
+  - combinational: 0
+  - others: 9
+
+Library Name     : WBWrapper
+  Total cells    : 12
+  - combinational: 0
+  - others: 12
+
+Library Name     : STD_FU
+  Total cells    : 23
+  - combinational: 0
+  - others: 23
+
+Library Name     : STD_DATAFLOW
+  Total cells    : 1
+  - combinational: 0
+  - others: 1
+
+Available devices:
+ - 5CSEMA5F31C6
+ - 5SGXEA7N2F45C1
+ - EP2C70F896C6
+ - EP2C70F896C6-R
+ - EP4SGX530KH40C2
+ - LFE335EA8FN484C
+ - LFE5U85F8BG756C
+ - LFE5UM85F8BG756C
+ - asap7-BC
+ - asap7-TC
+ - asap7-WC
+ - nangate45
+ - nx1h140tsp
+ - nx1h35S
+ - nx2h540tsc
+ - xc4vlx100-10ff1513
+ - xc5vlx110t-1ff1136
+ - xc5vlx330t-2ff1738
+ - xc5vlx50-3ff1153
+ - xc6vlx240t-1ff1156
+ - xc7a100t-1csg324-VVD
+ - xc7vx330t-1ffg1157
+ - xc7vx485t-2ffg1761-VVD
+ - xc7vx690t-3ffg1930-VVD
+ - xc7z020-1clg484
+ - xc7z020-1clg484-VVD
+ - xc7z020-1clg484-YOSYS-VVD
+ - xc7z045-2ffg900-VVD
+ - xcku060-3ffva1156-VVD
+ - xcu280-2Lfsvh2892-VVD
+ - xcu55c-2Lfsvh2892-VVD
+Library Name     : STD_FU
+  Total cells    : 3911
+  - combinational: 0
+  - others: 3911
+
+  Analyzing function _Z12oneHlsPidTops
+    Parameter @428604 er
+    Interface specification:
+      Parameter : er
+      Protocol  : default
+      Direction : IN
+      Bundle    : er
+      Bitwidth  : 16
+      Alignment : 2
+  Analyzed function _Z12oneHlsPidTops
+  Bit Value Opt: plus_expr optimized, nbits = 16
+  Bit Value Opt: plus_expr optimized, nbits = 7
+  Bit Value Opt: plus_expr optimized, nbits = 16
+  Bit Value Opt: bit_and_expr optimized, nbits = 8
+
+  Functions to be synthesized:
+    _Z12oneHlsPidTops
+
+
+  Memory allocation information:
+  Sparse memory alignment set to 1024 bytes
+    Internal variable: pid_1 - 428675 - pid_1 in function _Z12oneHlsPidTops
+      Id: 428675
+      Base Address: 1024
+      Size: 4
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 2
+      Maximum number of loads per function: 1
+    Internal variable: pid_0 - 428708 - pid_0 in function _Z12oneHlsPidTops
+      Id: 428708
+      Base Address: 1024
+      Size: 4
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 2
+      Maximum number of loads per function: 1
+    BRAM bitsize: 16
+    Spec may not exploit DATA bus width
+    All the data have a known address
+    Internal data is not externally accessible
+    DATA bus bitsize: 32
+    ADDRESS bus bitsize: 11
+    SIZE bus bitsize: 6
+    ALL pointers have been resolved
+    Internally allocated memory (no private memories): 0
+    Internally allocated memory: 8
+  Time to perform memory allocation: 0.00 seconds
+
+  Bit Value Opt: minus_expr optimized, nbits = 8
+  Bit Value Opt: plus_expr optimized, nbits = 8
+  Bit Value Opt: bit_and_expr optimized, nbits = 1
+
+  Memory allocation information:
+  Sparse memory alignment set to 1024 bytes
+    Internal variable: pid_1 - 428675 - pid_1 in function _Z12oneHlsPidTops
+      Id: 428675
+      Base Address: 1024
+      Size: 4
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 2
+      Maximum number of loads per function: 1
+    Internal variable: pid_0 - 428708 - pid_0 in function _Z12oneHlsPidTops
+      Id: 428708
+      Base Address: 1024
+      Size: 4
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 2
+      Maximum number of loads per function: 1
+    BRAM bitsize: 16
+    Spec may not exploit DATA bus width
+    All the data have a known address
+    Internal data is not externally accessible
+    DATA bus bitsize: 32
+    ADDRESS bus bitsize: 11
+    SIZE bus bitsize: 6
+    ALL pointers have been resolved
+    Internally allocated memory (no private memories): 0
+    Internally allocated memory: 8
+  Time to perform memory allocation: 0.00 seconds
+
+
+  Module allocation information for function _Z12oneHlsPidTops:
+    Number of complex operations: 4
+    Number of complex operations: 4
+  Time to perform module allocation: 0.03 seconds
+
+
+  Scheduling Information of function _Z12oneHlsPidTops:
+    Number of control steps: 4
+    Minimum slack: 3.4668629770000003
+    Estimated max frequency (MHz): 153.06582373513459
+  Time to perform scheduling: 0.01 seconds
+
+  Number of function call sites = 0
+
+  State Transition Graph Information of function _Z12oneHlsPidTops:
+    Number of operations: 70
+    Number of basic blocks: 3
+    Number of states: 2
+    Minimum number of cycles: 2
+    Maximum number of cycles 2
+    Done port is registered
+  Time to perform creation of STG: 0.00 seconds
+
+
+  Easy binding information for function _Z12oneHlsPidTops:
+    Bound operations:39/70
+  Time to perform easy binding: 0.00 seconds
+
+
+  Storage Value Information of function _Z12oneHlsPidTops:
+    Number of storage values inserted: 1
+  Time to compute storage value information: 0.00 seconds
+
+  Slack computed in 0.00 seconds
+  Weight computation completed in 0.00 seconds
+  False-loop computation completed in 0.00 seconds
+  Iteration 0 completed in 0.00 seconds
+
+  Register binding information for function _Z12oneHlsPidTops:
+    Register allocation algorithm obtains an optimal result: 1 registers
+  Time to perform register binding: 0.00 seconds
+
+  Iteration 1 completed in 0.00 seconds
+  Clique covering computation completed in 0.00 seconds
+
+  Module binding information for function _Z12oneHlsPidTops:
+    Number of modules instantiated: 70
+    Number of performance conflicts: 0
+    Estimated resources area (no Muxes and address logic): 3841
+    Estimated area of MUX21: 0
+    Total estimated area: 3841
+    Estimated number of DSPs: 0
+  Time to perform module binding: 0.00 seconds
+
+
+  Register binding information for function _Z12oneHlsPidTops:
+    Register allocation algorithm obtains an optimal result: 1 registers
+  Time to perform register binding: 0.00 seconds
+
+  Total number of flip-flops in function _Z12oneHlsPidTops: 32
+  All registers are without enable: function pipelining may come for free
+
+  Summary of resources:
+     - ARRAY_1D_STD_DISTRAM_NN_SDS: 2
+     - IIdata_converter_FU: 2
+     - IUdata_converter_FU: 6
+     - UIdata_converter_FU: 5
+     - UUdata_converter_FU: 12
+     - addr_expr_FU: 2
+     - constant_value: 15
+     - register_STD: 1
+     - rshift_expr_FU: 3
+     - ui_bit_and_expr_FU: 3
+     - ui_bit_ior_concat_expr_FU: 4
+     - ui_fshl_expr_FU: 2
+     - ui_lshift_expr_FU: 12
+     - ui_minus_expr_FU: 1
+     - ui_plus_expr_FU: 3
+     - ui_rshift_expr_FU: 15
+Analyzing Xilinx synthesis results
+  Slices                   : 13
+  Luts                     : 39
+  Power                    : 0.085000000000000006
+  Design slack             : 4.149
+  DSPs                     : 0
+  Frequency                : 170.91095539224065
+  Clock period             : 10
+  Design minimum period    : 5.851
+  Registers                : 31

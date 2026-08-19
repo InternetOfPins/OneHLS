@@ -1,0 +1,368 @@
+ ==  Bambu executed with: $BAMBU_APPIMAGE -I../../../include -I../../../../HAPI/include -I../../../../OneData/include -I/home/azevedo/Work/r-site.net/C++/ac_types/include -I/home/azevedo/Work/r-site.net/C++/ac_math/include --std=gnu++17 --compiler=I386_CLANG16 --device-name=xc7a100t-1csg324-VVD --clock-period=10 --top-fname=oneHlsNcoTop -v2 ../hls/nco_top.cpp 
+
+
+********************************************************************************
+                    ____                  _
+                   | __ )  __ _ _ __ ___ | |_   _   _
+                   |  _ \ / _` | '_ ` _ \| '_ \| | | |
+                   | |_) | (_| | | | | | | |_) | |_| |
+                   |____/ \__,_|_| |_| |_|_.__/ \__,_|
+
+********************************************************************************
+                         High-Level Synthesis Tool
+
+                         Politecnico di Milano - DEIB
+                          System Architectures Group
+********************************************************************************
+                Copyright (C) 2004-2024 Politecnico di Milano
+ Version: PandA 2024.10 - Revision c2ba6936ca2ed63137095fea0b630a1c66e20e63-main
+
+Parameters parsed in 0.00 seconds
+
+Library Name     : STD_FU
+  Total cells    : 3
+  - combinational: 0
+  - others: 3
+
+Library Name     : STD_FU
+  Total cells    : 10
+  - combinational: 0
+  - others: 10
+
+Library Name     : STD_FU
+  Total cells    : 33
+  - combinational: 0
+  - others: 33
+
+Library Name     : STD_FU
+  Total cells    : 8
+  - combinational: 0
+  - others: 8
+
+Library Name     : STD_FU
+  Total cells    : 56
+  - combinational: 0
+  - others: 56
+
+Library Name     : STD_FU
+  Total cells    : 1
+  - combinational: 0
+  - others: 1
+
+Library Name     : CS_COMPONENT
+  Total cells    : 16
+  - combinational: 0
+  - others: 16
+
+Library Name     : STD_FU
+  Total cells    : 2
+  - combinational: 0
+  - others: 2
+
+Library Name     : STD_FU
+  Total cells    : 0
+  - combinational: 0
+  - others: 0
+
+Library Name     : STD_FU
+  Total cells    : 3
+  - combinational: 0
+  - others: 3
+
+Library Name     : STD_FU
+  Total cells    : 21
+  - combinational: 0
+  - others: 21
+
+Library Name     : STD
+  Total cells    : 20
+  - combinational: 0
+  - others: 20
+
+Library Name     : STD_COMMON
+  Total cells    : 66
+  - combinational: 0
+  - others: 66
+
+Library Name     : STD_FU
+  Total cells    : 10
+  - combinational: 0
+  - others: 10
+
+Library Name     : STD_PC
+  Total cells    : 16
+  - combinational: 0
+  - others: 16
+
+Library Name     : STD_SOFT_FLOAT
+  Total cells    : 2
+  - combinational: 0
+  - others: 2
+
+Library Name     : STD
+  Total cells    : 98
+  - combinational: 0
+  - others: 98
+
+Library Name     : STD_FU
+  Total cells    : 2
+  - combinational: 0
+  - others: 2
+
+Library Name     : STD_FU
+  Total cells    : 9
+  - combinational: 0
+  - others: 9
+
+Library Name     : WBWrapper
+  Total cells    : 12
+  - combinational: 0
+  - others: 12
+
+Library Name     : STD_FU
+  Total cells    : 23
+  - combinational: 0
+  - others: 23
+
+Library Name     : STD_DATAFLOW
+  Total cells    : 1
+  - combinational: 0
+  - others: 1
+
+Available devices:
+ - 5CSEMA5F31C6
+ - 5SGXEA7N2F45C1
+ - EP2C70F896C6
+ - EP2C70F896C6-R
+ - EP4SGX530KH40C2
+ - LFE335EA8FN484C
+ - LFE5U85F8BG756C
+ - LFE5UM85F8BG756C
+ - asap7-BC
+ - asap7-TC
+ - asap7-WC
+ - nangate45
+ - nx1h140tsp
+ - nx1h35S
+ - nx2h540tsc
+ - xc4vlx100-10ff1513
+ - xc5vlx110t-1ff1136
+ - xc5vlx330t-2ff1738
+ - xc5vlx50-3ff1153
+ - xc6vlx240t-1ff1156
+ - xc7a100t-1csg324-VVD
+ - xc7vx330t-1ffg1157
+ - xc7vx485t-2ffg1761-VVD
+ - xc7vx690t-3ffg1930-VVD
+ - xc7z020-1clg484
+ - xc7z020-1clg484-VVD
+ - xc7z020-1clg484-YOSYS-VVD
+ - xc7z045-2ffg900-VVD
+ - xcku060-3ffva1156-VVD
+ - xcu280-2Lfsvh2892-VVD
+ - xcu55c-2Lfsvh2892-VVD
+Library Name     : STD_FU
+  Total cells    : 3911
+  - combinational: 0
+  - others: 3911
+
+In file included from ../hls/nco_top.cpp:12:
+In file included from ../hls/../src/nco.h:53:
+In file included from /home/azevedo/Work/r-site.net/C++/ac_math/include/ac_math/ac_sincos_cordic.h:88:
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:1933:58: warning: operator '?:' has lower precedence than '&'; '&' will be evaluated first [-Wbitwise-conditional-parentheses]
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:1933:58: note: place parentheses around the '&' expression to silence this warning
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+                                                         ^
+        (                                               )
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:1933:58: note: place parentheses around the '?:' expression to evaluate it first
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+                                                         ^
+                        (                                                                      )
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:2069:58: warning: operator '?:' has lower precedence than '&'; '&' will be evaluated first [-Wbitwise-conditional-parentheses]
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:2069:58: note: place parentheses around the '&' expression to silence this warning
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+                                                         ^
+        (                                               )
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:2069:58: note: place parentheses around the '?:' expression to evaluate it first
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+                                                         ^
+                        (                                                                      )
+2 warnings generated.
+  Analyzing function _Z12oneHlsNcoTopPiS_
+    Parameter @431119 out_re
+    Interface specification:
+      Parameter : out_re
+      Protocol  : default
+      Direction : IN
+      Bundle    : out_re
+      Bitwidth  : 32
+      Alignment : 4
+    Parameter @431120 out_im
+    Interface specification:
+      Parameter : out_im
+      Protocol  : default
+      Direction : IN
+      Bundle    : out_im
+      Bitwidth  : 32
+      Alignment : 4
+  Analyzed function _Z12oneHlsNcoTopPiS_
+  Bit Value Opt: plus_expr optimized, nbits = 29
+  Bit Value Opt: gt_expr optimized, nbits = 16
+  Bit Value Opt: lt_expr optimized, nbits = 16
+  Bit Value Opt: plus_expr optimized, nbits = 1
+  Bit Value Opt: lt_expr optimized, nbits = 16
+  Bit Value Opt: plus_expr optimized, nbits = 1
+  Bit Value Opt: bit_and_expr optimized, nbits = 16
+  Bit Value Opt: cond_expr optimized, nbits = 29
+  Bit Value Opt: cond_expr optimized, nbits = 29
+  Bit Value Opt: cond_expr optimized, nbits = 29
+
+  Functions to be synthesized:
+    _Z12oneHlsNcoTopPiS_
+
+
+  Memory allocation information:
+  Sparse memory alignment set to 1024 bytes
+    Internal variable: _ZN7ac_mathL18atan_pi_pow2_tableE - 429017 - _ZN7ac_mathL18atan_pi_pow2_tableE in function _Z12oneHlsNcoTopPiS_
+      Id: 429017
+      Base Address: 1024
+      Size: 840
+      Is a private memory
+      Is a Read Only Memory
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+    Internal variable: _ZN7ac_mathL7K_tableE - 430211 - _ZN7ac_mathL7K_tableE in function _Z12oneHlsNcoTopPiS_
+      Id: 430211
+      Base Address: 1024
+      Size: 840
+      Is a private memory
+      Is a Read Only Memory
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+    Internal variable: nco_0 - 431154 - nco_0 in function _Z12oneHlsNcoTopPiS_
+      Id: 431154
+      Base Address: 1024
+      Size: 4
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 2
+      Maximum number of loads per function: 1
+Warning: This function uses unknown addresses: _Z12oneHlsNcoTopPiS_
+    BRAM bitsize: 16
+    Spec may not exploit DATA bus width
+    Spec accesses data having an address unknown at compile time
+    Internal data is not externally accessible
+    DATA bus bitsize: 32
+    ADDRESS bus bitsize: 32
+    SIZE bus bitsize: 6
+    Internally allocated memory (no private memories): 0
+    Internally allocated memory: 1684
+  Time to perform memory allocation: 0.00 seconds
+
+
+  Module allocation information for function _Z12oneHlsNcoTopPiS_:
+    Number of complex operations: 10
+    Number of complex operations: 10
+  Time to perform module allocation: 0.06 seconds
+
+
+  Scheduling Information of function _Z12oneHlsNcoTopPiS_:
+    Number of control steps: 22
+    Minimum slack: 2.9065999949999761
+    Estimated max frequency (MHz): 140.97611854612964
+  Time to perform scheduling: 0.02 seconds
+
+  Number of function call sites = 0
+
+  State Transition Graph Information of function _Z12oneHlsNcoTopPiS_:
+    Number of operations: 185
+    Number of basic blocks: 15
+    Number of states: 20
+    Done port is registered
+  Time to perform creation of STG: 0.00 seconds
+
+
+  Easy binding information for function _Z12oneHlsNcoTopPiS_:
+    Bound operations:92/185
+  Time to perform easy binding: 0.00 seconds
+
+
+  Storage Value Information of function _Z12oneHlsNcoTopPiS_:
+    Number of storage values inserted: 49
+  Time to compute storage value information: 0.00 seconds
+
+  Slack computed in 0.00 seconds
+  Weight computation completed in 0.00 seconds
+  False-loop computation completed in 0.00 seconds
+  Iteration 0 completed in 0.00 seconds
+
+  Register binding information for function _Z12oneHlsNcoTopPiS_:
+    Register allocation algorithm obtains a sub-optimal result: 40 registers(LB:15)
+  Time to perform register binding: 0.00 seconds
+
+  Iteration 1 completed in 0.00 seconds
+  Clique covering computation completed in 0.00 seconds
+
+  Module binding information for function _Z12oneHlsNcoTopPiS_:
+    Number of modules instantiated: 179
+    Number of performance conflicts: 0
+    Estimated resources area (no Muxes and address logic): 4914
+    Estimated area of MUX21: 272
+    Total estimated area: 5186
+    Estimated number of DSPs: 0
+  Time to perform module binding: 0.01 seconds
+
+
+  Register binding information for function _Z12oneHlsNcoTopPiS_:
+    Register allocation algorithm obtains a sub-optimal result: 40 registers(LB:15)
+  Time to perform register binding: 0.00 seconds
+
+
+  Connection Binding Information for function _Z12oneHlsNcoTopPiS_:
+    Number of allocated multiplexers (2-to-1 equivalent): 25
+  Time to perform interconnection binding: 0.00 seconds
+
+  Total number of flip-flops in function _Z12oneHlsNcoTopPiS_: 1015
+
+  Summary of resources:
+     - ADDRESS_DECODING_LOGIC_NN: 2
+     - ARRAY_1D_STD_BRAM_NN: 2
+     - ARRAY_1D_STD_BRAM_NN_SP: 2
+     - ARRAY_1D_STD_DISTRAM_NN_SDS: 1
+     - BMEMORY_CTRLN: 1
+     - BRAM_MEMORY_CORE_SMALL: 2
+     - BRAM_MEMORY_NN_CORE: 2
+     - IIdata_converter_FU: 1
+     - IUdata_converter_FU: 17
+     - MUX_GATE: 25
+     - TRUE_DUAL_PORT_BYTE_ENABLING_RAM: 2
+     - UIdata_converter_FU: 18
+     - UUdata_converter_FU: 23
+     - addr_expr_FU: 3
+     - constant_value: 28
+     - gt_expr_FU: 1
+     - lshift_expr_FU: 1
+     - lt_expr_FU: 3
+     - lut_expr_FU: 1
+     - negate_expr_FU: 1
+     - read_cond_FU: 5
+     - register_SE: 32
+     - register_STD: 8
+     - rshift_expr_FU: 17
+     - ui_bit_and_expr_FU: 3
+     - ui_bit_ior_concat_expr_FU: 3
+     - ui_cond_expr_FU: 8
+     - ui_eq_expr_FU: 2
+     - ui_fshl_expr_FU: 4
+     - ui_lshift_expr_FU: 22
+     - ui_minus_expr_FU: 6
+     - ui_plus_expr_FU: 11
+     - ui_pointer_plus_expr_FU: 8
+     - ui_rshift_expr_FU: 9

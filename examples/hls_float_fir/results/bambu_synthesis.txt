@@ -1,0 +1,1316 @@
+ ==  Bambu executed with: $BAMBU_APPIMAGE -I/home/azevedo/Work/r-site.net/C++/IOP/OneHLS/examples/hls_float_fir/.pio/libdeps/hls/OneHLS/include -I/home/azevedo/Work/r-site.net/C++/IOP/OneHLS/examples/hls_float_fir/.pio/libdeps/hls/HAPI/include -I/home/azevedo/Work/r-site.net/C++/IOP/OneHLS/examples/hls_float_fir/.pio/libdeps/hls/OneData/include -I/home/azevedo/Work/r-site.net/C++/ac_types/include --std=gnu++17 --compiler=I386_CLANG16 --device-name=xc7a100t-1csg324-VVD --clock-period=10 --top-fname=oneHlsFloatFirTop -v2 /home/azevedo/Work/r-site.net/C++/IOP/OneHLS/examples/hls_float_fir/hls/fir_std_float_top.cpp 
+
+
+********************************************************************************
+                    ____                  _
+                   | __ )  __ _ _ __ ___ | |_   _   _
+                   |  _ \ / _` | '_ ` _ \| '_ \| | | |
+                   | |_) | (_| | | | | | | |_) | |_| |
+                   |____/ \__,_|_| |_| |_|_.__/ \__,_|
+
+********************************************************************************
+                         High-Level Synthesis Tool
+
+                         Politecnico di Milano - DEIB
+                          System Architectures Group
+********************************************************************************
+                Copyright (C) 2004-2024 Politecnico di Milano
+ Version: PandA 2024.10 - Revision c2ba6936ca2ed63137095fea0b630a1c66e20e63-main
+
+Parameters parsed in 0.00 seconds
+
+Library Name     : STD_FU
+  Total cells    : 3
+  - combinational: 0
+  - others: 3
+
+Library Name     : STD_FU
+  Total cells    : 10
+  - combinational: 0
+  - others: 10
+
+Library Name     : STD_FU
+  Total cells    : 33
+  - combinational: 0
+  - others: 33
+
+Library Name     : STD_FU
+  Total cells    : 8
+  - combinational: 0
+  - others: 8
+
+Library Name     : STD_FU
+  Total cells    : 56
+  - combinational: 0
+  - others: 56
+
+Library Name     : STD_FU
+  Total cells    : 1
+  - combinational: 0
+  - others: 1
+
+Library Name     : CS_COMPONENT
+  Total cells    : 16
+  - combinational: 0
+  - others: 16
+
+Library Name     : STD_FU
+  Total cells    : 2
+  - combinational: 0
+  - others: 2
+
+Library Name     : STD_FU
+  Total cells    : 0
+  - combinational: 0
+  - others: 0
+
+Library Name     : STD_FU
+  Total cells    : 3
+  - combinational: 0
+  - others: 3
+
+Library Name     : STD_FU
+  Total cells    : 21
+  - combinational: 0
+  - others: 21
+
+Library Name     : STD
+  Total cells    : 20
+  - combinational: 0
+  - others: 20
+
+Library Name     : STD_COMMON
+  Total cells    : 66
+  - combinational: 0
+  - others: 66
+
+Library Name     : STD_FU
+  Total cells    : 10
+  - combinational: 0
+  - others: 10
+
+Library Name     : STD_PC
+  Total cells    : 16
+  - combinational: 0
+  - others: 16
+
+Library Name     : STD_SOFT_FLOAT
+  Total cells    : 2
+  - combinational: 0
+  - others: 2
+
+Library Name     : STD
+  Total cells    : 98
+  - combinational: 0
+  - others: 98
+
+Library Name     : STD_FU
+  Total cells    : 2
+  - combinational: 0
+  - others: 2
+
+Library Name     : STD_FU
+  Total cells    : 9
+  - combinational: 0
+  - others: 9
+
+Library Name     : WBWrapper
+  Total cells    : 12
+  - combinational: 0
+  - others: 12
+
+Library Name     : STD_FU
+  Total cells    : 23
+  - combinational: 0
+  - others: 23
+
+Library Name     : STD_DATAFLOW
+  Total cells    : 1
+  - combinational: 0
+  - others: 1
+
+Available devices:
+ - 5CSEMA5F31C6
+ - 5SGXEA7N2F45C1
+ - EP2C70F896C6
+ - EP2C70F896C6-R
+ - EP4SGX530KH40C2
+ - LFE335EA8FN484C
+ - LFE5U85F8BG756C
+ - LFE5UM85F8BG756C
+ - asap7-BC
+ - asap7-TC
+ - asap7-WC
+ - nangate45
+ - nx1h140tsp
+ - nx1h35S
+ - nx2h540tsc
+ - xc4vlx100-10ff1513
+ - xc5vlx110t-1ff1136
+ - xc5vlx330t-2ff1738
+ - xc5vlx50-3ff1153
+ - xc6vlx240t-1ff1156
+ - xc7a100t-1csg324-VVD
+ - xc7vx330t-1ffg1157
+ - xc7vx485t-2ffg1761-VVD
+ - xc7vx690t-3ffg1930-VVD
+ - xc7z020-1clg484
+ - xc7z020-1clg484-VVD
+ - xc7z020-1clg484-YOSYS-VVD
+ - xc7z045-2ffg900-VVD
+ - xcku060-3ffva1156-VVD
+ - xcu280-2Lfsvh2892-VVD
+ - xcu55c-2Lfsvh2892-VVD
+Library Name     : STD_FU
+  Total cells    : 3911
+  - combinational: 0
+  - others: 3911
+
+In file included from /home/azevedo/Work/r-site.net/C++/IOP/OneHLS/examples/hls_float_fir/hls/fir_std_float_top.cpp:9:
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:1933:58: warning: operator '?:' has lower precedence than '&'; '&' will be evaluated first [-Wbitwise-conditional-parentheses]
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:1933:58: note: place parentheses around the '&' expression to silence this warning
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+                                                         ^
+        (                                               )
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:1933:58: note: place parentheses around the '?:' expression to evaluate it first
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+                                                         ^
+                        (                                                                      )
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:2069:58: warning: operator '?:' has lower precedence than '&'; '&' will be evaluated first [-Wbitwise-conditional-parentheses]
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:2069:58: note: place parentheses around the '&' expression to silence this warning
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+                                                         ^
+        (                                               )
+/home/azevedo/Work/r-site.net/C++/ac_types/include/ac_std_float.h:2069:58: note: place parentheses around the '?:' expression to evaluate it first
+    d = no_subnormals & (f.fpclassify() == FP_SUBNORMAL) ? std::signbit(f.d) ? -0.0 : 0.0 : f.d;
+                                                         ^
+                        (                                                                      )
+2 warnings generated.
+  Analyzing function _Z17oneHlsFloatFirTops
+    Parameter @428708 x
+    Interface specification:
+      Parameter : x
+      Protocol  : default
+      Direction : IN
+      Bundle    : x
+      Bitwidth  : 16
+      Alignment : 2
+  Analyzed function _Z17oneHlsFloatFirTops
+  Bit Value Opt: lt_expr optimized, nbits = 1
+  Bit Value Opt: cond_expr optimized, nbits = 23
+  Bit Value Opt: cond_expr optimized, nbits = 4
+  Bit Value Opt: cond_expr optimized, nbits = 3
+  Bit Value Opt: cond_expr optimized, nbits = 2
+  Bit Value Opt: plus_expr optimized, nbits = 2
+  Bit Value Opt: plus_expr optimized, nbits = 3
+  Bit Value Opt: bit_and_expr optimized, nbits = 23
+  Bit Value Opt: ne_expr optimized, nbits = 23
+  Bit Value Opt: plus_expr optimized, nbits = 21
+  Bit Value Opt: cond_expr optimized, nbits = 19
+  Bit Value Opt: bit_and_expr optimized, nbits = 52
+  Bit Value Opt: bit_and_expr optimized, nbits = 31
+  Bit Value Opt: lt_expr optimized, nbits = 1
+  Bit Value Opt: lt_expr optimized, nbits = 1
+  Bit Value Opt: cond_expr optimized, nbits = 20
+  Bit Value Opt: cond_expr optimized, nbits = 20
+  Bit Value Opt: cond_expr optimized, nbits = 4
+  Bit Value Opt: cond_expr optimized, nbits = 3
+  Bit Value Opt: cond_expr optimized, nbits = 2
+  Bit Value Opt: plus_expr optimized, nbits = 2
+  Bit Value Opt: plus_expr optimized, nbits = 5
+  Bit Value Opt: bit_and_expr optimized, nbits = 1
+  Bit Value Opt: bit_and_expr optimized, nbits = 19
+  Bit Value Opt: ne_expr optimized, nbits = 19
+  Bit Value Opt: bit_and_expr optimized, nbits = 9
+  Bit Value Opt: ne_expr optimized, nbits = 9
+  Bit Value Opt: bit_and_expr optimized, nbits = 20
+  Bit Value Opt: eq_expr optimized, nbits = 20
+  Bit Value Opt: bit_and_expr optimized, nbits = 20
+  Bit Value Opt: eq_expr optimized, nbits = 20
+  Bit Value Opt: bit_and_expr optimized, nbits = 1
+  Bit Value Opt: ne_expr optimized, nbits = 1
+  Bit Value Opt: cond_expr optimized, nbits = 19
+  Bit Value Opt: bit_and_expr optimized, nbits = 20
+  Bit Value Opt: cond_expr optimized, nbits = 20
+  Bit Value Opt: cond_expr optimized, nbits = 20
+  Bit Value Opt: cond_expr optimized, nbits = 31
+  Bit Value Opt: lt_expr optimized, nbits = 1
+  Bit Value Opt: cond_expr optimized, nbits = 20
+  Bit Value Opt: lt_expr optimized, nbits = 1
+  Bit Value Opt: cond_expr optimized, nbits = 20
+  Bit Value Opt: bit_and_expr optimized, nbits = 32
+  Bit Value Opt: bit_and_expr optimized, nbits = 32
+  Bit Value Opt: bit_xor_expr optimized, nbits = 2
+  Bit Value Opt: bit_and_expr optimized, nbits = 32
+  Bit Value Opt: bit_and_expr optimized, nbits = 1
+  Bit Value Opt: cond_expr optimized, nbits = 4
+  Bit Value Opt: cond_expr optimized, nbits = 3
+  Bit Value Opt: cond_expr optimized, nbits = 2
+  Bit Value Opt: plus_expr optimized, nbits = 2
+  Bit Value Opt: plus_expr optimized, nbits = 5
+  Bit Value Opt: bit_and_expr optimized, nbits = 3
+  Bit Value Opt: ne_expr optimized, nbits = 3
+  Bit Value Opt: bit_and_expr optimized, nbits = 20
+  Bit Value Opt: eq_expr optimized, nbits = 20
+  Bit Value Opt: bit_and_expr optimized, nbits = 20
+  Bit Value Opt: eq_expr optimized, nbits = 20
+  Bit Value Opt: cond_expr optimized, nbits = 32
+  Bit Value Opt: bit_and_expr optimized, nbits = 1
+  Bit Value Opt: cond_expr optimized, nbits = 4
+  Bit Value Opt: cond_expr optimized, nbits = 3
+  Bit Value Opt: cond_expr optimized, nbits = 2
+  Bit Value Opt: plus_expr optimized, nbits = 2
+  Bit Value Opt: bit_and_expr optimized, nbits = 6
+  Bit Value Opt: eq_expr optimized, nbits = 6
+  Bit Value Opt: bit_and_expr optimized, nbits = 6
+  Bit Value Opt: ne_expr optimized, nbits = 6
+  Bit Value Opt: bit_and_expr optimized, nbits = 23
+  Bit Value Opt: ne_expr optimized, nbits = 23
+  Bit Value Opt: plus_expr optimized, nbits = 24
+  Bit Value Opt: cond_expr optimized, nbits = 23
+  Bit Value Opt: bit_and_expr optimized, nbits = 31
+  Bit Value Opt: cond_expr optimized, nbits = 29
+  Bit Value Opt: cond_expr optimized, nbits = 5
+  Bit Value Opt: cond_expr optimized, nbits = 5
+Constraining function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE with 1 resources
+Constraining function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_ with 1 resources
+Constraining function _ZNK12ac_std_floatILi64ELi11EEplERKS0_ with 1 resources
+
+  Functions to be synthesized:
+    _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE
+    _Z17oneHlsFloatFirTops
+    _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+    _ZNK12ac_std_floatILi64ELi11EEplERKS0_
+
+  Upgraded function constraints for _Z17oneHlsFloatFirTops with 1 resources of _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE, before was INF
+  Upgraded function constraints for _Z17oneHlsFloatFirTops with 1 resources of _ZNK12ac_std_floatILi64ELi11EEmlERKS0_, before was INF
+  Upgraded function constraints for _Z17oneHlsFloatFirTops with 1 resources of _ZNK12ac_std_floatILi64ELi11EEplERKS0_, before was INF
+
+  Memory allocation information:
+  Sparse memory alignment set to 1024 bytes
+    Internal variable: internal_428819 - 428819 - internal_428819 in function _Z17oneHlsFloatFirTops
+      Id: 428819
+      Base Address: 1024
+      Size: 8
+      Used &(object)
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+    Internal variable: internal_428823 - 428823 - internal_428823 in function _Z17oneHlsFloatFirTops
+      Id: 428823
+      Base Address: 2048
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428826 - 428826 - internal_428826 in function _Z17oneHlsFloatFirTops
+      Id: 428826
+      Base Address: 3072
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428829 - 428829 - internal_428829 in function _Z17oneHlsFloatFirTops
+      Id: 428829
+      Base Address: 4096
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428832 - 428832 - internal_428832 in function _Z17oneHlsFloatFirTops
+      Id: 428832
+      Base Address: 5120
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428835 - 428835 - internal_428835 in function _Z17oneHlsFloatFirTops
+      Id: 428835
+      Base Address: 6144
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428838 - 428838 - internal_428838 in function _Z17oneHlsFloatFirTops
+      Id: 428838
+      Base Address: 7168
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428841 - 428841 - internal_428841 in function _Z17oneHlsFloatFirTops
+      Id: 428841
+      Base Address: 8192
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428845 - 428845 - internal_428845 in function _Z17oneHlsFloatFirTops
+      Id: 428845
+      Base Address: 9216
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428848 - 428848 - internal_428848 in function _Z17oneHlsFloatFirTops
+      Id: 428848
+      Base Address: 10240
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428851 - 428851 - internal_428851 in function _Z17oneHlsFloatFirTops
+      Id: 428851
+      Base Address: 11264
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428854 - 428854 - internal_428854 in function _Z17oneHlsFloatFirTops
+      Id: 428854
+      Base Address: 12288
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428858 - 428858 - internal_428858 in function _Z17oneHlsFloatFirTops
+      Id: 428858
+      Base Address: 13312
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428861 - 428861 - internal_428861 in function _Z17oneHlsFloatFirTops
+      Id: 428861
+      Base Address: 14336
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428864 - 428864 - internal_428864 in function _Z17oneHlsFloatFirTops
+      Id: 428864
+      Base Address: 15360
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428867 - 428867 - internal_428867 in function _Z17oneHlsFloatFirTops
+      Id: 428867
+      Base Address: 16384
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428871 - 428871 - internal_428871 in function _Z17oneHlsFloatFirTops
+      Id: 428871
+      Base Address: 17408
+      Size: 8
+      Used &(object)
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _Z17oneHlsFloatFirTops
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZNK12ac_std_floatILi64ELi11EEplERKS0_
+      Id: 428940
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      Is a Read Only Memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 4
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+      Variable is packed
+    Internal variable: fir - 429068 - fir in function _Z17oneHlsFloatFirTops
+      Id: 429068
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 8
+      Maximum number of loads per function: 4
+    Internal variable: internal_429492 - 429492 - internal_429492 in function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+      Id: 429492
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 10
+      Maximum number of loads per function: 6
+  This function performs unaligned accesses: _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE
+  This function performs unaligned accesses: _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+  This function performs unaligned accesses: _ZNK12ac_std_floatILi64ELi11EEplERKS0_
+    BRAM bitsize: 64
+    Spec may not exploit DATA bus width
+    All the data have a known address
+    Internal data is not externally accessible
+    DATA bus bitsize: 64
+    ADDRESS bus bitsize: 15
+    SIZE bus bitsize: 7
+    Code has LOADs or STOREs with unaligned accesses
+    Internally allocated memory (no private memories): 17408
+    Internally allocated memory: 17504
+  Time to perform memory allocation: 0.00 seconds
+
+
+  Memory allocation information:
+  Sparse memory alignment set to 1024 bytes
+    Internal variable: internal_428819 - 428819 - internal_428819 in function _Z17oneHlsFloatFirTops
+      Id: 428819
+      Base Address: 1024
+      Size: 8
+      Used &(object)
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+    Internal variable: internal_428823 - 428823 - internal_428823 in function _Z17oneHlsFloatFirTops
+      Id: 428823
+      Base Address: 2048
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428826 - 428826 - internal_428826 in function _Z17oneHlsFloatFirTops
+      Id: 428826
+      Base Address: 3072
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428829 - 428829 - internal_428829 in function _Z17oneHlsFloatFirTops
+      Id: 428829
+      Base Address: 4096
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428832 - 428832 - internal_428832 in function _Z17oneHlsFloatFirTops
+      Id: 428832
+      Base Address: 5120
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428835 - 428835 - internal_428835 in function _Z17oneHlsFloatFirTops
+      Id: 428835
+      Base Address: 6144
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428838 - 428838 - internal_428838 in function _Z17oneHlsFloatFirTops
+      Id: 428838
+      Base Address: 7168
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428841 - 428841 - internal_428841 in function _Z17oneHlsFloatFirTops
+      Id: 428841
+      Base Address: 8192
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428845 - 428845 - internal_428845 in function _Z17oneHlsFloatFirTops
+      Id: 428845
+      Base Address: 9216
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428848 - 428848 - internal_428848 in function _Z17oneHlsFloatFirTops
+      Id: 428848
+      Base Address: 10240
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428851 - 428851 - internal_428851 in function _Z17oneHlsFloatFirTops
+      Id: 428851
+      Base Address: 11264
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428854 - 428854 - internal_428854 in function _Z17oneHlsFloatFirTops
+      Id: 428854
+      Base Address: 12288
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428858 - 428858 - internal_428858 in function _Z17oneHlsFloatFirTops
+      Id: 428858
+      Base Address: 13312
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428861 - 428861 - internal_428861 in function _Z17oneHlsFloatFirTops
+      Id: 428861
+      Base Address: 14336
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428864 - 428864 - internal_428864 in function _Z17oneHlsFloatFirTops
+      Id: 428864
+      Base Address: 15360
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428867 - 428867 - internal_428867 in function _Z17oneHlsFloatFirTops
+      Id: 428867
+      Base Address: 16384
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428871 - 428871 - internal_428871 in function _Z17oneHlsFloatFirTops
+      Id: 428871
+      Base Address: 17408
+      Size: 8
+      Used &(object)
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _Z17oneHlsFloatFirTops
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZNK12ac_std_floatILi64ELi11EEplERKS0_
+      Id: 428940
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      Is a Read Only Memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 4
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+      Variable is packed
+    Internal variable: fir - 429068 - fir in function _Z17oneHlsFloatFirTops
+      Id: 429068
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 8
+      Maximum number of loads per function: 4
+    Internal variable: internal_429492 - 429492 - internal_429492 in function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+      Id: 429492
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 10
+      Maximum number of loads per function: 6
+  This function performs unaligned accesses: _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE
+  This function performs unaligned accesses: _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+  This function performs unaligned accesses: _ZNK12ac_std_floatILi64ELi11EEplERKS0_
+    BRAM bitsize: 64
+    Spec may not exploit DATA bus width
+    All the data have a known address
+    Internal data is not externally accessible
+    DATA bus bitsize: 64
+    ADDRESS bus bitsize: 15
+    SIZE bus bitsize: 7
+    Code has LOADs or STOREs with unaligned accesses
+    Internally allocated memory (no private memories): 17408
+    Internally allocated memory: 17504
+  Time to perform memory allocation: 0.00 seconds
+
+
+  Module allocation information for function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE:
+    Number of complex operations: 2
+    Number of complex operations: 2
+  Time to perform module allocation: 0.05 seconds
+
+
+  Memory allocation information:
+  Sparse memory alignment set to 1024 bytes
+    Internal variable: internal_428819 - 428819 - internal_428819 in function _Z17oneHlsFloatFirTops
+      Id: 428819
+      Base Address: 1024
+      Size: 8
+      Used &(object)
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+    Internal variable: internal_428823 - 428823 - internal_428823 in function _Z17oneHlsFloatFirTops
+      Id: 428823
+      Base Address: 2048
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428826 - 428826 - internal_428826 in function _Z17oneHlsFloatFirTops
+      Id: 428826
+      Base Address: 3072
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428829 - 428829 - internal_428829 in function _Z17oneHlsFloatFirTops
+      Id: 428829
+      Base Address: 4096
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428832 - 428832 - internal_428832 in function _Z17oneHlsFloatFirTops
+      Id: 428832
+      Base Address: 5120
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428835 - 428835 - internal_428835 in function _Z17oneHlsFloatFirTops
+      Id: 428835
+      Base Address: 6144
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428838 - 428838 - internal_428838 in function _Z17oneHlsFloatFirTops
+      Id: 428838
+      Base Address: 7168
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428841 - 428841 - internal_428841 in function _Z17oneHlsFloatFirTops
+      Id: 428841
+      Base Address: 8192
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428845 - 428845 - internal_428845 in function _Z17oneHlsFloatFirTops
+      Id: 428845
+      Base Address: 9216
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428848 - 428848 - internal_428848 in function _Z17oneHlsFloatFirTops
+      Id: 428848
+      Base Address: 10240
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428851 - 428851 - internal_428851 in function _Z17oneHlsFloatFirTops
+      Id: 428851
+      Base Address: 11264
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428854 - 428854 - internal_428854 in function _Z17oneHlsFloatFirTops
+      Id: 428854
+      Base Address: 12288
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428858 - 428858 - internal_428858 in function _Z17oneHlsFloatFirTops
+      Id: 428858
+      Base Address: 13312
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428861 - 428861 - internal_428861 in function _Z17oneHlsFloatFirTops
+      Id: 428861
+      Base Address: 14336
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428864 - 428864 - internal_428864 in function _Z17oneHlsFloatFirTops
+      Id: 428864
+      Base Address: 15360
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428867 - 428867 - internal_428867 in function _Z17oneHlsFloatFirTops
+      Id: 428867
+      Base Address: 16384
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428871 - 428871 - internal_428871 in function _Z17oneHlsFloatFirTops
+      Id: 428871
+      Base Address: 17408
+      Size: 8
+      Used &(object)
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _Z17oneHlsFloatFirTops
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZNK12ac_std_floatILi64ELi11EEplERKS0_
+      Id: 428940
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      Is a Read Only Memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 4
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+      Variable is packed
+    Internal variable: fir - 429068 - fir in function _Z17oneHlsFloatFirTops
+      Id: 429068
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 8
+      Maximum number of loads per function: 4
+    Internal variable: internal_429492 - 429492 - internal_429492 in function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+      Id: 429492
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 10
+      Maximum number of loads per function: 6
+  This function performs unaligned accesses: _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE
+  This function performs unaligned accesses: _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+  This function performs unaligned accesses: _ZNK12ac_std_floatILi64ELi11EEplERKS0_
+    BRAM bitsize: 64
+    Spec may not exploit DATA bus width
+    All the data have a known address
+    Internal data is not externally accessible
+    DATA bus bitsize: 64
+    ADDRESS bus bitsize: 15
+    SIZE bus bitsize: 7
+    Code has LOADs or STOREs with unaligned accesses
+    Internally allocated memory (no private memories): 17408
+    Internally allocated memory: 17504
+  Time to perform memory allocation: 0.01 seconds
+
+
+  Memory allocation information:
+  Sparse memory alignment set to 1024 bytes
+    Internal variable: internal_428819 - 428819 - internal_428819 in function _Z17oneHlsFloatFirTops
+      Id: 428819
+      Base Address: 1024
+      Size: 8
+      Used &(object)
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+    Internal variable: internal_428823 - 428823 - internal_428823 in function _Z17oneHlsFloatFirTops
+      Id: 428823
+      Base Address: 2048
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428826 - 428826 - internal_428826 in function _Z17oneHlsFloatFirTops
+      Id: 428826
+      Base Address: 3072
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428829 - 428829 - internal_428829 in function _Z17oneHlsFloatFirTops
+      Id: 428829
+      Base Address: 4096
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428832 - 428832 - internal_428832 in function _Z17oneHlsFloatFirTops
+      Id: 428832
+      Base Address: 5120
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428835 - 428835 - internal_428835 in function _Z17oneHlsFloatFirTops
+      Id: 428835
+      Base Address: 6144
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428838 - 428838 - internal_428838 in function _Z17oneHlsFloatFirTops
+      Id: 428838
+      Base Address: 7168
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428841 - 428841 - internal_428841 in function _Z17oneHlsFloatFirTops
+      Id: 428841
+      Base Address: 8192
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428845 - 428845 - internal_428845 in function _Z17oneHlsFloatFirTops
+      Id: 428845
+      Base Address: 9216
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428848 - 428848 - internal_428848 in function _Z17oneHlsFloatFirTops
+      Id: 428848
+      Base Address: 10240
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428851 - 428851 - internal_428851 in function _Z17oneHlsFloatFirTops
+      Id: 428851
+      Base Address: 11264
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428854 - 428854 - internal_428854 in function _Z17oneHlsFloatFirTops
+      Id: 428854
+      Base Address: 12288
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428858 - 428858 - internal_428858 in function _Z17oneHlsFloatFirTops
+      Id: 428858
+      Base Address: 13312
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428861 - 428861 - internal_428861 in function _Z17oneHlsFloatFirTops
+      Id: 428861
+      Base Address: 14336
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428864 - 428864 - internal_428864 in function _Z17oneHlsFloatFirTops
+      Id: 428864
+      Base Address: 15360
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428867 - 428867 - internal_428867 in function _Z17oneHlsFloatFirTops
+      Id: 428867
+      Base Address: 16384
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428871 - 428871 - internal_428871 in function _Z17oneHlsFloatFirTops
+      Id: 428871
+      Base Address: 17408
+      Size: 8
+      Used &(object)
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _Z17oneHlsFloatFirTops
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZNK12ac_std_floatILi64ELi11EEplERKS0_
+      Id: 428940
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      Is a Read Only Memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 4
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+      Variable is packed
+    Internal variable: fir - 429068 - fir in function _Z17oneHlsFloatFirTops
+      Id: 429068
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 8
+      Maximum number of loads per function: 4
+    Internal variable: internal_429492 - 429492 - internal_429492 in function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+      Id: 429492
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 10
+      Maximum number of loads per function: 6
+  This function performs unaligned accesses: _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE
+  This function performs unaligned accesses: _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+  This function performs unaligned accesses: _ZNK12ac_std_floatILi64ELi11EEplERKS0_
+    BRAM bitsize: 64
+    Spec may not exploit DATA bus width
+    All the data have a known address
+    Internal data is not externally accessible
+    DATA bus bitsize: 64
+    ADDRESS bus bitsize: 15
+    SIZE bus bitsize: 7
+    Code has LOADs or STOREs with unaligned accesses
+    Internally allocated memory (no private memories): 17408
+    Internally allocated memory: 17504
+  Time to perform memory allocation: 0.00 seconds
+
+
+  Module allocation information for function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_:
+    Number of complex operations: 20
+    Number of complex operations: 20
+  Time to perform module allocation: 0.11 seconds
+
+
+  Memory allocation information:
+  Sparse memory alignment set to 1024 bytes
+    Internal variable: internal_428819 - 428819 - internal_428819 in function _Z17oneHlsFloatFirTops
+      Id: 428819
+      Base Address: 1024
+      Size: 8
+      Used &(object)
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+    Internal variable: internal_428823 - 428823 - internal_428823 in function _Z17oneHlsFloatFirTops
+      Id: 428823
+      Base Address: 2048
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428826 - 428826 - internal_428826 in function _Z17oneHlsFloatFirTops
+      Id: 428826
+      Base Address: 3072
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428829 - 428829 - internal_428829 in function _Z17oneHlsFloatFirTops
+      Id: 428829
+      Base Address: 4096
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428832 - 428832 - internal_428832 in function _Z17oneHlsFloatFirTops
+      Id: 428832
+      Base Address: 5120
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428835 - 428835 - internal_428835 in function _Z17oneHlsFloatFirTops
+      Id: 428835
+      Base Address: 6144
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428838 - 428838 - internal_428838 in function _Z17oneHlsFloatFirTops
+      Id: 428838
+      Base Address: 7168
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428841 - 428841 - internal_428841 in function _Z17oneHlsFloatFirTops
+      Id: 428841
+      Base Address: 8192
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428845 - 428845 - internal_428845 in function _Z17oneHlsFloatFirTops
+      Id: 428845
+      Base Address: 9216
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428848 - 428848 - internal_428848 in function _Z17oneHlsFloatFirTops
+      Id: 428848
+      Base Address: 10240
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428851 - 428851 - internal_428851 in function _Z17oneHlsFloatFirTops
+      Id: 428851
+      Base Address: 11264
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428854 - 428854 - internal_428854 in function _Z17oneHlsFloatFirTops
+      Id: 428854
+      Base Address: 12288
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428858 - 428858 - internal_428858 in function _Z17oneHlsFloatFirTops
+      Id: 428858
+      Base Address: 13312
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428861 - 428861 - internal_428861 in function _Z17oneHlsFloatFirTops
+      Id: 428861
+      Base Address: 14336
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428864 - 428864 - internal_428864 in function _Z17oneHlsFloatFirTops
+      Id: 428864
+      Base Address: 15360
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428867 - 428867 - internal_428867 in function _Z17oneHlsFloatFirTops
+      Id: 428867
+      Base Address: 16384
+      Size: 8
+      Used &(object)
+    Internal variable: internal_428871 - 428871 - internal_428871 in function _Z17oneHlsFloatFirTops
+      Id: 428871
+      Base Address: 17408
+      Size: 8
+      Used &(object)
+      Number of functions in which is used: 1
+      Maximum number of references per function: 1
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _Z17oneHlsFloatFirTops
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+    Internal variable: __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab - 428940 - __const__ZN10ac_private15iv_leading_bitsILi1EEEjPKib_tab in function _ZNK12ac_std_floatILi64ELi11EEplERKS0_
+      Id: 428940
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      Is a Read Only Memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 4
+      Maximum number of references per function: 1
+      Maximum number of loads per function: 1
+      Variable is packed
+    Internal variable: fir - 429068 - fir in function _Z17oneHlsFloatFirTops
+      Id: 429068
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 8
+      Maximum number of loads per function: 4
+    Internal variable: internal_429492 - 429492 - internal_429492 in function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+      Id: 429492
+      Base Address: 1024
+      Size: 16
+      Is a private memory
+      The variable is always accessed with the same data size
+      Number of functions in which is used: 1
+      Maximum number of references per function: 10
+      Maximum number of loads per function: 6
+  This function performs unaligned accesses: _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE
+  This function performs unaligned accesses: _ZNK12ac_std_floatILi64ELi11EEmlERKS0_
+  This function performs unaligned accesses: _ZNK12ac_std_floatILi64ELi11EEplERKS0_
+    BRAM bitsize: 64
+    Spec may not exploit DATA bus width
+    All the data have a known address
+    Internal data is not externally accessible
+    DATA bus bitsize: 64
+    ADDRESS bus bitsize: 15
+    SIZE bus bitsize: 7
+    Code has LOADs or STOREs with unaligned accesses
+    Internally allocated memory (no private memories): 17408
+    Internally allocated memory: 17504
+  Time to perform memory allocation: 0.00 seconds
+
+
+  Module allocation information for function _ZNK12ac_std_floatILi64ELi11EEplERKS0_:
+    Number of complex operations: 6
+    Number of complex operations: 6
+  Time to perform module allocation: 0.10 seconds
+
+
+  Scheduling Information of function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE:
+    Number of control steps: 8
+    Minimum slack: 1.0650499980000103
+    Estimated max frequency (MHz): 111.92004429528548
+  Time to perform scheduling: 0.02 seconds
+
+  Number of function call sites = 8
+
+  State Transition Graph Information of function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE:
+    Number of operations: 116
+    Number of basic blocks: 5
+    Number of states: 7
+    Minimum number of cycles: 4
+    Maximum number of cycles 7
+    Parameters are registered
+    Done port is registered
+  Time to perform creation of STG: 0.00 seconds
+
+
+  Scheduling Information of function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_:
+    Number of control steps: 22
+    Minimum slack: 0.9796539940000214
+    Estimated max frequency (MHz): 110.86049241734622
+  Time to perform scheduling: 0.05 seconds
+
+  Number of function call sites = 4
+
+  State Transition Graph Information of function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_:
+    Number of operations: 346
+    Number of basic blocks: 11
+    Number of states: 21
+    Minimum number of cycles: 12
+    Maximum number of cycles 18
+    Parameters are registered
+    Done port is registered
+  Time to perform creation of STG: 0.00 seconds
+
+
+  Scheduling Information of function _ZNK12ac_std_floatILi64ELi11EEplERKS0_:
+    Number of control steps: 15
+    Minimum slack: 0.096925996000014281
+    Estimated max frequency (MHz): 100.97874655850157
+  Time to perform scheduling: 0.03 seconds
+
+  Number of function call sites = 4
+
+  State Transition Graph Information of function _ZNK12ac_std_floatILi64ELi11EEplERKS0_:
+    Number of operations: 302
+    Number of basic blocks: 5
+    Number of states: 14
+    Minimum number of cycles: 11
+    Maximum number of cycles 14
+    Parameters are registered
+    Done port is registered
+  Time to perform creation of STG: 0.00 seconds
+
+
+  Easy binding information for function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE:
+    Bound operations:86/116
+  Time to perform easy binding: 0.00 seconds
+
+
+  Easy binding information for function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_:
+    Bound operations:180/346
+  Time to perform easy binding: 0.00 seconds
+
+
+  Easy binding information for function _ZNK12ac_std_floatILi64ELi11EEplERKS0_:
+    Bound operations:167/302
+  Time to perform easy binding: 0.00 seconds
+
+
+  Storage Value Information of function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE:
+    Number of storage values inserted: 17
+  Time to compute storage value information: 0.00 seconds
+
+
+  Storage Value Information of function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_:
+    Number of storage values inserted: 108
+  Time to compute storage value information: 0.00 seconds
+
+
+  Storage Value Information of function _ZNK12ac_std_floatILi64ELi11EEplERKS0_:
+    Number of storage values inserted: 65
+  Time to compute storage value information: 0.00 seconds
+
+  Slack computed in 0.00 seconds
+  Weight computation completed in 0.00 seconds
+  False-loop computation completed in 0.00 seconds
+  Iteration 0 completed in 0.00 seconds
+
+  Register binding information for function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE:
+    Register allocation algorithm obtains a sub-optimal result: 16 registers(LB:11)
+  Time to perform register binding: 0.00 seconds
+
+  Iteration 1 completed in 0.00 seconds
+  Clique covering computation completed in 0.00 seconds
+
+  Module binding information for function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE:
+    Number of modules instantiated: 116
+    Number of performance conflicts: 5
+    Estimated resources area (no Muxes and address logic): 1612
+    Estimated area of MUX21: 0
+    Total estimated area: 1612
+    Estimated number of DSPs: 0
+  Time to perform module binding: 0.00 seconds
+
+
+  Register binding information for function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE:
+    Register allocation algorithm obtains a sub-optimal result: 16 registers(LB:11)
+  Time to perform register binding: 0.00 seconds
+
+
+  Connection Binding Information for function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE:
+    Number of allocated multiplexers (2-to-1 equivalent): 2
+  Time to perform interconnection binding: 0.00 seconds
+
+  Total number of flip-flops in function _ZN12ac_std_floatILi64ELi11EEC2ILi32ELi8EEERKS_IXT_EXT0_EE: 166
+  Slack computed in 0.00 seconds
+  Weight computation completed in 0.00 seconds
+  False-loop computation completed in 0.00 seconds
+  Iteration 0 completed in 0.00 seconds
+
+  Register binding information for function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_:
+    Register allocation algorithm obtains a sub-optimal result: 103 registers(LB:33)
+  Time to perform register binding: 0.01 seconds
+
+  Iteration 1 completed in 0.00 seconds
+  Clique covering computation completed in 0.01 seconds
+
+  Module binding information for function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_:
+    Number of modules instantiated: 335
+    Number of performance conflicts: 56
+    Estimated resources area (no Muxes and address logic): 5896
+    Estimated area of MUX21: 308
+    Total estimated area: 6204
+    Estimated number of DSPs: 12
+  Time to perform module binding: 0.02 seconds
+
+
+  Register binding information for function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_:
+    Register allocation algorithm obtains a sub-optimal result: 103 registers(LB:33)
+  Time to perform register binding: 0.00 seconds
+
+
+  Connection Binding Information for function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_:
+    Number of allocated multiplexers (2-to-1 equivalent): 21
+  Time to perform interconnection binding: 0.01 seconds
+
+  Total number of flip-flops in function _ZNK12ac_std_floatILi64ELi11EEmlERKS0_: 1605
+  Slack computed in 0.00 seconds
+  Weight computation completed in 0.00 seconds
+  False-loop computation completed in 0.00 seconds
+  Iteration 0 completed in 0.00 seconds
+
+  Register binding information for function _ZNK12ac_std_floatILi64ELi11EEplERKS0_:
+    Register allocation algorithm obtains a sub-optimal result: 64 registers(LB:22)
+  Time to perform register binding: 0.00 seconds
+
+  Iteration 1 completed in 0.00 seconds
+  Clique covering computation completed in 0.00 seconds
+
+  Module binding information for function _ZNK12ac_std_floatILi64ELi11EEplERKS0_:
+    Number of modules instantiated: 299
+    Number of performance conflicts: 81
+    Estimated resources area (no Muxes and address logic): 3883
+    Estimated area of MUX21: 137
+    Total estimated area: 4020
+    Estimated number of DSPs: 0
+  Time to perform module binding: 0.01 seconds
+
+
+  Register binding information for function _ZNK12ac_std_floatILi64ELi11EEplERKS0_:
+    Register allocation algorithm obtains a sub-optimal result: 64 registers(LB:22)
+  Time to perform register binding: 0.00 seconds
+
+
+  Connection Binding Information for function _ZNK12ac_std_floatILi64ELi11EEplERKS0_:
+    Number of allocated multiplexers (2-to-1 equivalent): 7
+  Time to perform interconnection binding: 0.00 seconds
+
+  Total number of flip-flops in function _ZNK12ac_std_floatILi64ELi11EEplERKS0_: 1253
+
+  Module allocation information for function _Z17oneHlsFloatFirTops:
+    Number of complex operations: 27
+    Number of complex operations: 27
+  Time to perform module allocation: 0.04 seconds
+
+
+  Scheduling Information of function _Z17oneHlsFloatFirTops:
+    Number of control steps: 25
+    Minimum slack: 5.0000000000000003e-10
+    Estimated max frequency (MHz): 100.000000005
+  Time to perform scheduling: 0.02 seconds
+
+  Number of function call sites = 0
+
+  State Transition Graph Information of function _Z17oneHlsFloatFirTops:
+    Number of operations: 136
+    Number of basic blocks: 3
+    Number of states: 39
+    Done port is registered
+  Time to perform creation of STG: 0.00 seconds
+
+
+  Easy binding information for function _Z17oneHlsFloatFirTops:
+    Bound operations:95/136
+  Time to perform easy binding: 0.00 seconds
+
+
+  Storage Value Information of function _Z17oneHlsFloatFirTops:
+    Number of storage values inserted: 39
+  Time to compute storage value information: 0.00 seconds
+
+  Slack computed in 0.00 seconds
+  Weight computation completed in 0.01 seconds
+  False-loop computation completed in 0.00 seconds
+  Iteration 0 completed in 0.00 seconds
+
+  Register binding information for function _Z17oneHlsFloatFirTops:
+    Register allocation algorithm obtains a sub-optimal result: 39 registers(LB:28)
+  Time to perform register binding: 0.00 seconds
+
+  Iteration 1 completed in 0.00 seconds
+
+  Register binding information for function _Z17oneHlsFloatFirTops:
+    Register allocation algorithm obtains a sub-optimal result: 39 registers(LB:28)
+  Time to perform register binding: 0.00 seconds
+
+  Iteration 2 completed in 0.00 seconds
+  Clique covering computation completed in 0.00 seconds
+
+  Module binding information for function _Z17oneHlsFloatFirTops:
+    Number of modules instantiated: 117
+    Number of performance conflicts: 1
+    Estimated resources area (no Muxes and address logic): 10356
+    Estimated area of MUX21: 452
+    Total estimated area: 10808
+    Estimated number of DSPs: 0
+  Time to perform module binding: 0.01 seconds
+
+
+  Register binding information for function _Z17oneHlsFloatFirTops:
+    Register allocation algorithm obtains a sub-optimal result: 39 registers(LB:28)
+  Time to perform register binding: 0.00 seconds
+
+
+  Connection Binding Information for function _Z17oneHlsFloatFirTops:
+    Number of allocated multiplexers (2-to-1 equivalent): 36
+  Time to perform interconnection binding: 0.00 seconds
+
+  Total number of flip-flops in function _Z17oneHlsFloatFirTops: 614
+
+  Summary of resources:
+     - ADDRESS_DECODING_LOGIC_NN: 17
+     - ARRAY_1D_STD_BRAM_NN: 17
+     - ARRAY_1D_STD_BRAM_NN_SP: 17
+     - ARRAY_1D_STD_DISTRAM_NN_SDS: 6
+     - ASSIGN_UNSIGNED_FU: 5
+     - BMEMORY_CTRLN: 3
+     - BRAM_MEMORY_CORE_SMALL: 17
+     - BRAM_MEMORY_NN_CORE: 17
+     - IIdata_converter_FU: 2
+     - IUdata_converter_FU: 16
+     - MUX_GATE: 66
+     - OR_GATE: 3
+     - TRUE_DUAL_PORT_BYTE_ENABLING_RAM: 17
+     - UIdata_converter_FU: 10
+     - UUdata_converter_FU: 231
+     - __builtin_abs: 2
+     - addr_expr_FU: 23
+     - bus_merger: 7
+     - cond_expr_FU: 1
+     - constant_value: 186
+     - flipflop_AR: 3
+     - join_signal: 49
+     - lshift_expr_FU: 2
+     - lt_expr_FU: 1
+     - lut_expr_FU: 45
+     - max_expr_FU: 2
+     - read_cond_FU: 5
+     - register_SE: 103
+     - register_STD: 127
+     - rshift_expr_FU: 6
+     - split_signal: 7
+     - ui_bit_and_expr_FU: 59
+     - ui_bit_ior_concat_expr_FU: 7
+     - ui_bit_ior_expr_FU: 42
+     - ui_bit_xor_expr_FU: 8
+     - ui_cond_expr_FU: 55
+     - ui_eq_expr_FU: 27
+     - ui_extract_bit_expr_FU: 45
+     - ui_fshl_expr_FU: 17
+     - ui_gt_expr_FU: 5
+     - ui_lshift_expr_FU: 107
+     - ui_lt_expr_FU: 21
+     - ui_min_expr_FU: 2
+     - ui_minus_expr_FU: 6
+     - ui_mult_expr_FU: 4
+     - ui_ne_expr_FU: 9
+     - ui_negate_expr_FU: 1
+     - ui_plus_expr_FU: 23
+     - ui_pointer_plus_expr_FU: 18
+     - ui_rshift_expr_FU: 120
+     - ui_ternary_mp_expr_FU: 1
+     - ui_ternary_plus_expr_FU: 5

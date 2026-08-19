@@ -109,6 +109,9 @@ underlying synthesis result.*
 
 ## Results (verified, not estimated)
 
+Raw Bambu synthesis log backing the numbers below: [results/bambu_synthesis.txt](results/bambu_synthesis.txt)
+(the full `.hls_out_nco/` build output itself is gitignored/regenerable — only the log is preserved here).
+
 Native, exact — the standard unit circle at 8 evenly-spaced points (45°
 steps), hand-derived, `PhaseInc=8192` (Q1.15 raw, `0.25` in
 `angle_over_pi` units, 8 steps/revolution). All 8 steps land within 3 LSB

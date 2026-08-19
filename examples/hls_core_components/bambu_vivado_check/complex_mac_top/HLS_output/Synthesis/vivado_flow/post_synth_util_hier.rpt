@@ -1,0 +1,38 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (lin64) Build 6511674 Tue Jun 16 11:01:26 MDT 2026
+| Date         : Wed Aug 19 16:03:04 2026
+| Host         : neurux running 64-bit Ubuntu 24.04.3 LTS
+| Command      : report_utilization -hierarchical -file HLS_output/Synthesis/vivado_flow/post_synth_util_hier.rpt
+| Design       : _Z19oneHlsComplexMacTopssPiS_
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------------------------------------+----------------------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+|                      Instance                     |                 Module                 | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | DSP Blocks |
++---------------------------------------------------+----------------------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+| _Z19oneHlsComplexMacTopssPiS_                     |                                  (top) |        195 |        195 |       0 |    0 | 262 |      0 |      0 |          0 |
+|   (_Z19oneHlsComplexMacTopssPiS_)                 |                                  (top) |          0 |          0 |       0 |    0 |   0 |      0 |      0 |          0 |
+|   __Z19oneHlsComplexMacTopssPiS__i0               |         __Z19oneHlsComplexMacTopssPiS_ |        195 |        195 |       0 |    0 | 262 |      0 |      0 |          0 |
+|     Datapath_i                                    | datapath__Z19oneHlsComplexMacTopssPiS_ |        191 |        191 |       0 |    0 | 256 |      0 |      0 |          0 |
+|       BMEMORY_CTRLN_15_i0                         |                          BMEMORY_CTRLN |         64 |         64 |       0 |    0 |   0 |      0 |      0 |          0 |
+|       array_428698_0                              |                   ARRAY_1D_STD_BRAM_NN |         64 |         64 |       0 |    0 | 128 |      0 |      0 |          0 |
+|         ARRAY_1D_STD_BRAM_NN_instance             |                ARRAY_1D_STD_BRAM_NN_SP |         64 |         64 |       0 |    0 | 128 |      0 |      0 |          0 |
+|           BRAM_MEMORY_NN_instance_a               |    BRAM_MEMORY_NN_CORE__parameterized0 |         31 |         31 |       0 |    0 |  64 |      0 |      0 |          0 |
+|             BRAM_MEMORY_instance_small            |               BRAM_MEMORY_CORE_SMALL_2 |         31 |         31 |       0 |    0 |  64 |      0 |      0 |          0 |
+|           SECOND_MEMORY.BRAM_MEMORY_NN_instance_b |                    BRAM_MEMORY_NN_CORE |         33 |         33 |       0 |    0 |  64 |      0 |      0 |          0 |
+|             BRAM_MEMORY_instance_small            |                 BRAM_MEMORY_CORE_SMALL |         33 |         33 |       0 |    0 |  64 |      0 |      0 |          0 |
++---------------------------------------------------+----------------------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+
+
