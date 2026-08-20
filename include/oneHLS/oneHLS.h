@@ -15,7 +15,11 @@
 #pragma once
 #include <hapi/hapi.h>
 #include <oneData/oneData.h>
-#include <cstdint>
+#ifdef __AVR__
+  #include <stdint.h>
+#else
+  #include <cstdint>
+#endif
 
 namespace oneHLS {
   using namespace hapi;
