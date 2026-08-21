@@ -47,10 +47,19 @@
  * definition under design (1) above.
  */
 #pragma once
-#include <cstdint>
-#include <cstddef>
-#include <utility>
-#include <type_traits>
+#ifdef __AVR__
+  // no libstdc++ on AVR -- stdint.h/stddef.h are the freestanding C
+  // headers (same pattern as oneHLS.h's own __AVR__ gate); forward/
+  // decay_t have no substitute here and come from HAPI's existing shim.
+  #include <stdint.h>
+  #include <stddef.h>
+  #include <hapi/platform/avr/avr_std.h>
+#else
+  #include <cstdint>
+  #include <cstddef>
+  #include <utility>
+  #include <type_traits>
+#endif
 
 namespace oneHLS {
 
