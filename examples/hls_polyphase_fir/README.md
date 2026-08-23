@@ -20,12 +20,9 @@ exists for exactly this case.
 
 This example — specifically, the boilerplate problem of hand-writing a
 new decimator's branches/flags/dispatch by hand for every `M` — is what
-`StaticList` was built and promoted to solve. Five different internal
-designs were tried and Bambu-synthesized before landing on this one
-(`StaticList`'s non-empty list shape + runtime `visit()` dispatch),
-including a real HAPI bug found and worked around along the way, and a
-genuine, still-open resource trade-off (see Results below) — this
-example is the "graduated" result, not the whole story.
+`StaticList` was built and promoted to solve, via its non-empty list
+shape + runtime `visit()` dispatch. A genuine, still-open resource
+trade-off remains (see Results below).
 
 **This is research code, not yet part of the stable library.**
 `StaticList` itself is real and promoted (`include/oneHLS/staticList.h`)

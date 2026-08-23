@@ -27,12 +27,12 @@
  *    real element (Head head;), never an empty terminal. StaticBody<>
  *    (the empty specialization) always exists as SOME node's Tail even
  *    for the very last real item; this type never instantiates a
- *    zero-element node at all. Confirmed to matter under real Bambu HLS
- *    synthesis, not just a style preference: PHASE9_GENERIC_POLYPHASE.md
- *    §6 found removing the empty terminal cut area ~34% and roughly
- *    tripled timing margin, when paired with visit()-style dispatch (no
- *    measurable effect paired with compile-time getAt<I>() dispatch --
- *    the two interact, see that doc for the full comparison).
+ *    zero-element node at all. This measurably affects real Bambu HLS
+ *    synthesis, not just style: removing the empty terminal cuts area
+ *    ~34% and roughly triples timing margin when paired with
+ *    visit()-style dispatch (no measurable effect paired with
+ *    compile-time getAt<I>() dispatch -- the two interact, see
+ *    PHASE9_GENERIC_POLYPHASE.md §6 for the full comparison).
  * 2. Provides BOTH visit(i,fn) (runtime i, kept for interface parity
  *    with OneMenu's own body family -- StaticBody/CArrayBody/
  *    CPtrArrayBody/JoinBody all share this exact signature) and
