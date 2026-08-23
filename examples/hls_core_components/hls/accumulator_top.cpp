@@ -1,7 +1,7 @@
 // Bambu synthesis target: OneHLS's generic oneHLS::Accumulator<> instantiated
 // with ac_int<8,true> for both Sample and Accum, matching the predecessor
-// this generalizes (OneData/.RnD/acTypesHLS/hls/ac_accumulator_top.cpp)
-// exactly, including its deliberate narrow-width 2's-complement wraparound.
+// this generalizes exactly, including its deliberate narrow-width
+// 2's-complement wraparound.
 #include <oneHLS/oneHLS.h>
 #include <oneHLS/ac_types_support.h>
 #include <cstdint>

@@ -14,7 +14,7 @@ checkout layout.
 
 Five custom HLS targets, one per core component (see the main README's
 "Verified results" table -- these are the same targets, reproducible
-from a clean clone rather than only from local .RnD/ scratch):
+from a clean clone rather than only from local scratch work):
 
     pio run -e hls -t synthesize-fir
     pio run -e hls -t synthesize-biquad

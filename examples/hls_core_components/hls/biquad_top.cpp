@@ -1,9 +1,8 @@
 // Bambu synthesis target: OneHLS's generic oneHLS::Biquad<> instantiated
 // with ac_fixed, same coefficients/types as the predecessor this
-// generalizes (OneData/.RnD/acTypesHLS/hls/biquad_top.cpp) -- confirms
-// the direct-form-I IIR composition (feedforward Tap reused verbatim,
-// feedback FBTap's two-phase fbSum()/fbPush() split) still synthesizes
-// cleanly once genericized.
+// generalizes -- confirms the direct-form-I IIR composition (feedforward
+// Tap reused verbatim, feedback FBTap's two-phase fbSum()/fbPush() split)
+// still synthesizes cleanly once genericized.
 #include <oneHLS/oneHLS.h>
 #include <oneHLS/ac_types_support.h>
 #include <cstdint>

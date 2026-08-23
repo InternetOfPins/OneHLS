@@ -1,8 +1,7 @@
 // Bambu synthesis target: OneHLS's generic oneHLS::Fir<> instantiated with
-// ac_fixed, same coefficients/types as the predecessor this generalizes
-// (OneData/.RnD/acTypesHLS/hls/fir_lpf4_actypes_reg_top.cpp) -- confirms
-// the library's type-erasure-free genericity costs nothing extra under
-// synthesis vs. the hand-written, non-generic version it replaces.
+// ac_fixed, same coefficients/types as the predecessor this generalizes --
+// confirms the library's type-erasure-free genericity costs nothing extra
+// under synthesis vs. the hand-written, non-generic version it replaces.
 #include <oneHLS/oneHLS.h>
 #include <oneHLS/ac_types_support.h>
 #include <cstdint>

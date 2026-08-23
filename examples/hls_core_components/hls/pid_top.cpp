@@ -1,8 +1,7 @@
 // Bambu synthesis target: OneHLS's generic oneHLS::Pid<> instantiated
 // with ac_fixed, same coefficients/types as the predecessor this
-// generalizes (OneData/.RnD/acTypesHLS/hls/pid_top.cpp) -- confirms the
-// integral (accumulator-shaped) / derivative (FIR-tap-delay-shaped) split
-// still synthesizes cleanly once genericized.
+// generalizes -- confirms the integral (accumulator-shaped) / derivative
+// (FIR-tap-delay-shaped) split still synthesizes cleanly once genericized.
 #include <oneHLS/oneHLS.h>
 #include <oneHLS/ac_types_support.h>
 #include <cstdint>

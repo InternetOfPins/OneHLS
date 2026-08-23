@@ -1,9 +1,9 @@
 // Bambu synthesis target: OneHLS's generic oneHLS::ComplexMac<> (built on
 // OneHLS's own vendor-agnostic Complex<T>, NOT ac_complex<T>) instantiated
 // with ac_fixed, same coefficients/types as the predecessor this
-// generalizes (OneData/.RnD/acTypesHLS/hls/ac_complex_cmac_top.cpp) --
-// confirms whether the known BRAM-binding anomaly (the one non-zero-cost
-// component in this whole investigation, see README) reproduces with a
+// generalizes -- confirms whether the known BRAM-binding anomaly (the
+// one non-zero-cost component in this whole investigation, see README)
+// reproduces with a
 // user-defined struct-of-two-fields the same way it did with ac_complex<T>,
 // rather than assuming it does.
 #include <oneHLS/oneHLS.h>

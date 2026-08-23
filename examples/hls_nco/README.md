@@ -127,8 +127,8 @@ vendor-header noise seen elsewhere in this library: unknown `#pragma
 hls_waive`, `ac_std_float.h`'s `bfloat16` deprecated-copy, plus the same
 expected "unknown addresses" note the main README documents for
 `ComplexMac<>`'s pointer output — re-run directly against the files in
-this directory, not just the `.RnD/` prototype, confirming promotion
-changed nothing):
+this directory, not just the earlier local prototype, confirming
+promotion changed nothing):
 
 | | Flip-flops | Area | DSPs | States | Slack (10ns budget) | State binding |
 |---|---|---|---|---|---|---|

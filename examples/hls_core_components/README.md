@@ -5,7 +5,7 @@ components — `Fir<>`, `Biquad<>`, `Pid<>`, `Accumulator<>`, `ComplexMac<>`
 (all in `include/oneHLS/oneHLS.h`) — plus a native demo of all five. These
 are the exact targets behind the main [README.md](../../README.md)'s
 "Verified results" tables; this example exists so those numbers are
-reproducible from a clean clone instead of only from local `.RnD/` scratch.
+reproducible from a clean clone instead of only from local scratch work.
 
 ## Target device
 
