@@ -190,6 +190,7 @@ See [.RnD/hls/fir_std_float_top.cpp](.RnD/hls/fir_std_float_top.cpp).
 - [`examples/hls_cic_decimator`](examples/hls_cic_decimator) — a genuinely multirate (N-in/1-out) CIC decimator, byte-for-byte diffed zero-cost vs. a hand-written monolithic version.
 - [`examples/hls_polyphase_fir`](examples/hls_polyphase_fir) — a polyphase FIR decimator built on `oneHLS::StaticList<>`, this library's general-purpose heterogeneous-list utility.
 - [`examples/hls_nco`](examples/hls_nco) — a numerically controlled oscillator that composes `ac_math::ac_sin_cordic`/`ac_cos_cordic` directly, the one example in this library that borrows an external HLS primitive as-is instead of reimplementing it.
+- [`examples/hls_streaming_buffers`](examples/hls_streaming_buffers) — streaming 2D sliding-window primitives (line buffer, window extract, MAC reduce, pooling, small conv layers, AXI4-Stream boundary). A composition/HLS result about **buffer sizing**: a hand-composed streaming pipeline needs no inter-stage FIFO, and every buffer it does need has a compile-time-derived depth — contrasted directly against hls4ml's conservative per-layer FIFO default, with hls4ml's own generated code included. Not CNN-specific: the same primitives build a streaming erode/dilate.
 
 **Research** — the CIC and polyphase examples above came out of an internal study of what OneHLS/HAPI can borrow from NVIDIA CuTe/CUTLASS's composition discipline, kept as dev notes in `.RnD/docs/` (not part of the published repo), including a real HAPI bug found along the way.
 
