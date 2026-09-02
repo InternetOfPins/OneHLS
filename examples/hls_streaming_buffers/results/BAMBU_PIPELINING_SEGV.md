@@ -1,7 +1,20 @@
 # Bambu `--pipelining` segfault — two chained windowed stages
 
-**Status: FILED — https://github.com/ferrandi/PandA-bambu/issues/403**
-(2026-09, all four repro files inlined in the issue body).
+**Status: FIXED upstream — https://github.com/ferrandi/PandA-bambu/issues/403**
+(filed 2026-09 with all four repro files inlined; fixed by `0c00896`,
+PR #369, merged 2025-11-17).
+
+- **Segfaults** on Bambu ≤ `c2ba6936` (2024.10 AppImage).
+- **Fixed** on `dev/panda` `0c00896` and later — verified on `380f327`
+  (PandA 2026.06): `--pipelining` on the real 2-layer top exits 0 and
+  generates RTL, no crash. The fix guards
+  `tree_manager::RecursiveReplaceTreeNode` against replacing a tree node
+  with a non-SSA node.
+- **The II=1 claim is still Vitis-only, though** — for a different
+  reason now (see "Impact" below): dev/panda declines to
+  function-pipeline any body containing loops (*"Disabled function
+  pipelining — not possible when one or more loops are present"*), where
+  Vitis's `PIPELINE II=1` flattens them. Crash gone ≠ II=1 delivered.
 
 Self-contained repro (no HAPI, no OneData, no fixed-point — `<cstdint>`
 only) in `bambu_repro/` (`ISSUE.md`, `repro.cpp`, `line_buffer.h`,
@@ -57,5 +70,28 @@ bambu -I. ... --top-fname=topW1 --pipelining repro.cpp   # OK
 Bambu can synthesise the multi-layer composition (proves zero inter-stage
 FIFO) but **cannot force it to II=1**. Vitis HLS 2026.1 pipelines the
 identical source to `Final II = 1, Depth = 18` with no trouble. So the
-II=1 throughput claim in HANDOFF Round 8a rests on Vitis alone until this
-is fixed or worked around; the zero-FIFO resource claim holds on both.
+II=1 throughput claim in HANDOFF Round 8a rests on Vitis alone; the
+zero-FIFO resource claim holds on both.
+
+**After the fix (dev/panda `380f327`):** unchanged conclusion. The crash
+is gone, but `--pipelining` on `oneHlsTwoLayerPipeTop` now reports
+*"Disabled function pipelining — not possible when one or more loops are
+present"* and falls back to per-loop II (inner conv loop II=1, pool /
+outer loops II=3). Bambu's `--pipelining` is function-level and refuses
+loop-containing bodies; Vitis flattens them under `PIPELINE II=1`. II=1
+for the whole pipeline stays Vitis-only — now a pipelining-model gap,
+not a defect.
+
+## Draft confirmation comment for #403 (post + close)
+
+> Confirmed fixed. Rebuilt `dev/panda` at `380f327` (PandA 2026.06) and
+> re-ran the repro plus our real 2-layer streaming-CNN top with
+> `--pipelining` on `xc7a100t-1csg324` — both exit 0 and generate RTL,
+> no segfault after register binding. Matches your result. The `0c00896`
+> guard on `RecursiveReplaceTreeNode` lines up with the crash site (the
+> pipelining/register stage). Thanks — closing.
+>
+> (Note for anyone finding this later: the crash is gone, but a
+> function body with loops still isn't function-pipelined — Bambu
+> prints "Disabled function pipelining … one or more loops are
+> present". That's expected behaviour, not this bug.)
